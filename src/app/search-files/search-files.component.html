@@ -1,0 +1,15 @@
+<p>search-files works!</p>
+<h2 style="margin: 50px 0 40px 0;">Search Results:</h2>
+
+<div class="grid-container">
+
+  <app-user-item *ngFor="let userEl of searchResult" [user]="userEl"></app-user-item>
+</div>
+<hr>
+<div>
+  <ul class="nav nav-pills">
+    <li class="nav-item" *ngFor="let p of pages; let i = index">
+      <a class="nav-item" href="" (click)="setPage(i,$event)">{{i}}</a>
+    </li>
+  </ul>
+</div>

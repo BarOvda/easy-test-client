@@ -1,0 +1,12 @@
+<div class="grid-item-row">
+
+    <div class="polaroid">
+      <img [src]="user.avatar" alt="{{ user.avatar }}" style="width:100%">
+      <div class="container">
+        <h3>{{user.name}}</h3>
+        <p>{{user.email}}</p>
+        <button (click)="Follow()">Follow</button>
+      </div>
+    </div>
+  </div>
+  

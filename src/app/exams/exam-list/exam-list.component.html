@@ -1,0 +1,28 @@
+<div class="row">
+    <!--div class="col-s-12">
+        <button class="btn btn-success">New Exam</button>
+    </div-->
+</div>
+
+<div style="opacity:0.3;">
+    <h1>My Tests</h1>
+  </div>
+<hr>
+<!--form>
+    <input type="text" name="search" placeholder="Search..">
+  </form-->
+<p>Upcoming Tests</p>
+<div class="row">
+    <div class="col-s-12">
+        <a href="#" class="list-group-item clearfix" *ngFor="let exam of exams">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{ exam.name }}</h4>
+                <p class="list-group-item-text">{{ exam.description}}</p>
+            </div>
+            <span class="pull-right">
+                <img [src]="exam.imagePath" alt="{{ exam.name }}" class="img-responsive" style="max-height: 50px;">
+            </span>
+        </a>
+    </div>
+</div>
+<app-exam-item></app-exam-item>
