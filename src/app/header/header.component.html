@@ -27,9 +27,8 @@
             </ul>
         </div> 
         <ng-template #elseBlock>
-          <div >
+          <div>
             <ul class="nav navbar-nav navbar-center">
-              
                 <li><a routerLink="/">Home</a></li>
                   <li><a routerLink="/exams">My Exams</a></li>
                   <li><a routerLink="/exam-detail">Exam Detail</a>
@@ -39,6 +38,9 @@
           </div>
           <ul class="nav navbar-nav navbar-right" style="margin: 10px;">
             <li>HI, {{headerEmail}} </li>
+            <li ><button  class="pull-right" ng-click="logOut">Log Out</button></li>
+              
+
           </ul>
         </ng-template>
       

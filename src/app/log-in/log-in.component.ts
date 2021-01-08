@@ -3,6 +3,8 @@ import { Router, RouterModule } from '@angular/router';
 import { User } from '../../models/user';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
+import { CookieService } from 'ngx-cookie-service';
+
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -12,7 +14,8 @@ export class LogInComponent implements OnInit {
   email: string;
   password:string = '12345';
   isValidEmail: Boolean;
-  constructor(private service: UserService, private router: Router) { }
+
+  constructor(private cookieService:CookieService,private service: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.isValidEmail = true;
@@ -36,5 +39,10 @@ export class LogInComponent implements OnInit {
   }
 
   isValidEmailCheack() { return this.isValidEmail }
+  setAuth(value: string): void {
+    //0.0138889//this accept day not minuts
+    this.cookieService.set('token', value, 0.0138889);
+}
+
 
 }

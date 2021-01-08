@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-
+import {CookieService} from 'ngx-cookie-service'
 
 
 @Component({
@@ -16,13 +16,15 @@ export class HeaderComponent implements OnInit{
     headerEmail: string;
     fileSearch: string;
     
-    constructor(private service: UserService, private router: Router) { }
+    constructor(private service: UserService, private router: Router,private cookieService:CookieService) { }
   
     ngOnInit(): void {
     }
   
     emailName() {
-      if(this.service.user){
+      const isAuth = this.cookieService.check("user");
+      if(isAuth){
+        console.log(this.service.user.email);
          this.headerEmail = this.service.user.email;
          console.log("true");
        return true;
@@ -35,6 +37,11 @@ export class HeaderComponent implements OnInit{
       this.router.navigate(['/search-page/'], { queryParams: { searchUsername: this.fileSearch } }).then(() => {
         this.fileSearch = '';
       });
+    }
+    logOut(){
+      this.cookieService.delete("user");
+      this.cookieService.delete("token");
+      this.router.navigate(['/']);
     }
 
 }
