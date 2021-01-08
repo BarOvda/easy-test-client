@@ -5,35 +5,42 @@
               <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
             </button>
             <!--a routerLink="/feed" class="navbar-brand">Easy Test!</a-->
-            <a routerLink="/feed"><div class="center">
+            <a routerLink="/"><div class="center">
                 <img
                   src="https://lh5.googleusercontent.com/BhhgMLODm65M2l8bSyf9Dv4h2P5PdbCmunbiAZnAGHlZvvRDb182CDDoU5UOtueeH2GH8j3xtqL2eqqJl3yjAkf7GsJuekOY_7XDhElGAB6fPDDF_vEvBcqHNHEP6Qf8NERuUBO68VU"
                   width="80" height="80" alt="logo">
               </div>
             </a>
           </div>
-          <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+          <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true" *ngIf="!emailName();else elseBlock">
             <ul class="nav navbar-nav navbar-center">
-                <li><a routerLink="/exams">My Exams</a></li>
-                <li><a routerLink="/exam-detail">Exam Detail</a>
-                <li><a routerLink="/explore">Explore</a></li>
-                <li><a routerLink="/explore">Settings</a></li>
-                <!--li><a href="#">Exams</a></li-->
 
+            <li><a routerLink="/">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 
-                  <ul class="nav navbar-nav navbar-right" *ngIf="!emailName();else elseBlock">
+                  <ul class="nav navbar-nav navbar-right" >
                     <li routerLinkActive="active"><a routerLink="/sign-up">Sign-Up</a></li>
                     <li routerLinkActive="active"><a routerLink="/log-in">Log-In</a></li>
                   </ul>
-                  <ng-template #elseBlock>
-                    <ul class="nav navbar-nav navbar-right" style="margin: 10px;">
-                      <li>HI, {{headerEmail}} </li>
-                    </ul>
-                  </ng-template>
-                
+                  
             </ul>
         </div> 
+        <ng-template #elseBlock>
+          <div >
+            <ul class="nav navbar-nav navbar-center">
+              
+                <li><a routerLink="/">Home</a></li>
+                  <li><a routerLink="/exams">My Exams</a></li>
+                  <li><a routerLink="/exam-detail">Exam Detail</a>
+                  <li><a routerLink="/explore">Explore</a></li>
+                  <li><a routerLink="/explore">Settings</a></li>
+            </ul>
+          </div>
+          <ul class="nav navbar-nav navbar-right" style="margin: 10px;">
+            <li>HI, {{headerEmail}} </li>
+          </ul>
+        </ng-template>
+      
     </div>
 </nav>
