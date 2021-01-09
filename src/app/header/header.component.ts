@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit{
       if(isAuth){
         console.log(this.service.user.email);
          this.headerEmail = this.service.user.email;
-         console.log("true");
        return true;
       }else{
         return false;
@@ -39,6 +38,7 @@ export class HeaderComponent implements OnInit{
       });
     }
     logOut(){
+      console.log("Log Out");
       this.cookieService.delete("user");
       this.cookieService.delete("token");
       this.router.navigate(['/']);

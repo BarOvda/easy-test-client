@@ -26,6 +26,8 @@ import { UserItemComponent } from './search-files/user-item/user-item.component'
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SearchCoursesComponent } from './search-courses/search-courses.component';
+import { CourseItemComponent } from './search-courses/course-item/course-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     UserItemComponent,
     FileUploaderComponent,
     HomeComponent,
-    SignUpComponent
+    SignUpComponent,
+    SearchCoursesComponent,
+    CourseItemComponent
     //MytestsComponent,
     //TestListComponent,
     //MyTestsComponent,

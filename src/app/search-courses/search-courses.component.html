@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-12" style="margin: 10px;">
+      <app-course-item *ngFor="let courseEl of courses" [course]="courseEl"></app-course-item>
+    </div>
+  </div>
+
+  <hr>
+  <div>
+    <ul class="nav nav-pills">
+      <li class="nav-item" *ngFor="let p of pages; let i = index">
+        <a class="nav-item" href="" (click)="setPage(i,$event)">{{i}}</a>
+      </li>
+    </ul>
+  </div>

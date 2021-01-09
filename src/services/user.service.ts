@@ -17,16 +17,11 @@ export class UserService {
 
 
   constructor(private http: HttpClient,private cookieServise: CookieService) {
-    console.log(cookieServise.get("user"));
-
+    //cookieServise.delete("user");
+   // cookieServise.delete("token");
    if(cookieServise.check("user")){
-
-    //console.log(cookieServise.get("user"));
-    //this.user = cookieServise.get("user");
-   // cookieServise.delete("user");
       this.user = JSON.parse(cookieServise.get("user"));  
-      //Object.assign(this.user,cookieServise.get("user"));
-   }
+    }
    }
 
 
@@ -34,9 +29,10 @@ export class UserService {
     return this.http.post<any>(`${environment.apiUrl}/users/login`,{email:email,password:password})
     .toPromise()
     .then(json=>{
+      
       this.user = json["user"];
-      this.cookieServise.set("user",json["user"]);
-      this.cookieServise.set("token",json["token"]);
+      this.cookieServise.set("user",JSON.stringify(json.user));
+      this.cookieServise.set("token",JSON.stringify(json.token));
     });
   }
   public check(email: string): Promise<any> {
@@ -48,5 +44,17 @@ export class UserService {
     this.cookieServise.delete("user");
     this.cookieServise.delete("token");
   }
+  public followCourse(courseId: string): Promise<any> {
+    let headers = new HttpHeaders();
+    headers.append('Authorization', this.cookieServise.get("token") )
 
+      console.log(this.cookieServise.get("token"));
+    const options = { headers: headers};
+    console.log(options);
+    return this.http.put<any>(`${environment.apiUrl}/follow-course/${courseId}/`,null,{headers:headers})
+    .toPromise()
+    .then(json=>{
+      console.log(json);
+    });
+  }
 }

@@ -12,23 +12,23 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LogInComponent implements OnInit {
   email: string;
-  password:string = '12345';
-  isValidEmail: Boolean;
+  password:string;
+  isValidDetails: Boolean;
 
   constructor(private cookieService:CookieService,private service: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.isValidEmail = true;
+    this.isValidDetails = true;
   }
-
+  
   onSubmitLogIn() {
-    this.isValidEmail = true;
-
+    this.isValidDetails = true;
+    
     this.service.login(this.email,this.password).catch((err: HttpErrorResponse) => {
       console.log('An error occurred:', err.error);
-      this.isValidEmail = false;
+      this.isValidDetails = false;
     }).then(()=>{
-      if(this.isValidEmail)
+      if(this.isValidDetails)
         this.gotoUserList();
     });
     
@@ -38,11 +38,8 @@ export class LogInComponent implements OnInit {
     this.router.navigate(['/feed']);
   }
 
-  isValidEmailCheack() { return this.isValidEmail }
-  setAuth(value: string): void {
-    //0.0138889//this accept day not minuts
-    this.cookieService.set('token', value, 0.0138889);
-}
+  isValidEmailCheack() { return this.isValidDetails }
+
 
 
 }

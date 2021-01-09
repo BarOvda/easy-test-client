@@ -10,6 +10,7 @@ export class User {
     role: string;
     name: string;
     avatar: string;
+    _id:string;
 }
 
 
