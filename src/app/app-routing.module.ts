@@ -8,15 +8,17 @@ import { MainLogoComponent } from './main-logo/main-logo.component';
 import { SearchFilesComponent } from './search-files/search-files.component'
 import { HomeComponent } from './home/home.component'
 import { SignUpComponent } from './sign-up/sign-up.component'
+import { FileUploadComponent } from './file-upload/file-upload.component';
 const appRoutes: Routes=[
     { path: '',component: HomeComponent },
     {path: 'courses',component: SearchCoursesComponent },
     { path: 'exams',component: ExamListComponent },
-    { path: "search-page", component: SearchFilesComponent },
+    { path: 'search-page', component: SearchFilesComponent },
     { path: 'exam-detail',component: ExamDetailComponent },
     { path: 'log-in',component: LogInComponent },
     { path: 'sign-up',component:SignUpComponent  },
-    { path: "feed", component: MainLogoComponent },
+    { path: 'feed', component: MainLogoComponent },
+    { path: 'upload-file', component: FileUploadComponent },
     { path: '**', redirectTo: '/'}
 
 ];

@@ -1,3 +1,14 @@
+<body>
+  <form (ngSubmit)="onSearchCourse()">
+    <div class="container">
+      <input type="text" placeholder="Enter Course Name ..." [(ngModel)]="this.searchValue" name="Attribute" required>
+      <div class="clearfix">
+        <button type="submit" class="SEARCH">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <hr>
 <div class="row">
     <div class="col-xs-12" style="margin: 10px;">
       <app-course-item *ngFor="let courseEl of courses" [course]="courseEl"></app-course-item>
@@ -12,3 +23,4 @@
       </li>
     </ul>
   </div>
+</body>

@@ -12,7 +12,7 @@ export class SearchCoursesComponent implements OnInit {
   courses: Course[] = [];
   page: number = 0;
   pages: number[] = [];
-
+  searchValue:string;
   name: string;
 
   constructor(private courseService: CourseService, private router: Router) { }
@@ -46,4 +46,10 @@ export class SearchCoursesComponent implements OnInit {
       // }
     });
   }
+
+
+  async onSearchCourse() {
+    const searchResults = this.courseService
+  }
+
 }

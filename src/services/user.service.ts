@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { User } from '../models/user';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +14,11 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-
   constructor(private http: HttpClient,private cookieServise: CookieService) {
     //cookieServise.delete("user");
    // cookieServise.delete("token");
    if(cookieServise.check("user")){
-      this.user = JSON.parse(cookieServise.get("user"));  
+      this.user = JSON.parse(cookieServise.get("user"));
     }
    }
 
@@ -30,9 +28,10 @@ export class UserService {
     .toPromise()
     .then(json=>{
       
+
       this.user = json["user"];
       this.cookieServise.set("user",JSON.stringify(json.user));
-      this.cookieServise.set("token",JSON.stringify(json.token));
+      this.cookieServise.set("token",json.token);
     });
   }
   public check(email: string): Promise<any> {
@@ -46,15 +45,16 @@ export class UserService {
   }
   public followCourse(courseId: string): Promise<any> {
     let headers = new HttpHeaders();
-    headers.append('Authorization', this.cookieServise.get("token") )
-
-      console.log(this.cookieServise.get("token"));
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
     const options = { headers: headers};
-    console.log(options);
-    return this.http.put<any>(`${environment.apiUrl}/follow-course/${courseId}/`,null,{headers:headers})
+    return this.http.put<any>(`${environment.apiUrl}/users/follow-course/${courseId}`
+    ,null,options
+    )       
     .toPromise()
     .then(json=>{
       console.log(json);
     });
   }
+
+ 
 }

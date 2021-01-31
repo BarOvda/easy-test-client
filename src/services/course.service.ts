@@ -21,14 +21,17 @@ export class CourseService {
 
   public async getAllCourses(page:string): Promise<any> {
     const params = new HttpParams().set("page",page);
-    
-    
     const result = 
      await this.http.get<any>(`${environment.apiUrl}/courses/all-courses`,{params:params})
     .toPromise();
      return result;
-    
-  //  console.log(result);
+  }
+  public async searchCourseByKeyWord(keyWord:string): Promise<any> {
+    const result = 
+     await this.http.post<any>(`${environment.apiUrl}/courses/search/key-word`,keyWord)
+    .toPromise();
+     return result;
+
   }
  
 }
