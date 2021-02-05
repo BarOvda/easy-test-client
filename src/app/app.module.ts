@@ -25,6 +25,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { IgxDropDownModule, IgxButtonModule, IgxToggleModule } from "igniteui-angular";
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { IgxDropDownModule, IgxButtonModule, IgxToggleModule } from "igniteui-an
     SignUpComponent,
     SearchCoursesComponent,
     CourseItemComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { IgxDropDownModule, IgxButtonModule, IgxToggleModule } from "igniteui-an
 	IgxButtonModule,
   IgxToggleModule,
   BrowserAnimationsModule,
+  NgxPaginationModule
   // MatButtonModule,
   // MatFormFieldModule,
   // MatInputModule,

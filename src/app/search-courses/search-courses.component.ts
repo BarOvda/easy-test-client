@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CourseService} from '../../services/course.service'
 import {Course} from '../../models/course'
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-search-courses',
@@ -10,46 +11,47 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class SearchCoursesComponent implements OnInit {
   courses: Course[] = [];
-  page: number = 0;
-  pages: number[] = [];
+  page: number =1;
+  totalItems:number;
+  itemsPerPage:number = 2;
   searchValue:string;
   name: string;
+  followedCourses:boolean[];
 
-  constructor(private courseService: CourseService, private router: Router) { }
-  setPage(i: number, event: Event) {
-
-    event.preventDefault();
-    this.page = i;
-    this.getCourses();
-
-  }
+  constructor(private courseService: CourseService,private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getCourses();
+    this.reloadData(this.page);
   }
 
 
-  getCourses() {
-    this.courses = [];
-    this.pages = [];
-
-    // this.router.queryParams.subscribe(params => {
-    //   this.name = params.searchRecipe;
-    // })
-    console.log("here");
-
-    this.courseService.getAllCourses(this.page.toString()).then((json) => {
-      this.courses = json.courses;
-      console.log("the course"+this.courses);
-      // for (let i = 0; i < (parseInt(("" + (this.recipes.length / 10 + 1)))); i++) {
-      //   this.pages.push(i);
-      // }
-    });
+  async followCourse(coureId:string){
+    await this.userService.followCourse(coureId);
+    this.reloadData(0);
   }
-
-
   async onSearchCourse() {
     const searchResults = this.courseService
   }
+  reloadData(page:number) {
+    this.courses = [];
 
+    this.courseService.getAllCourses(this.page.toString(),this.itemsPerPage.toString()).then((json) => {
+      this.courses = json.courses;
+      this.page = +json.current_page;
+      this.totalItems = +json.total_items;
+      this.itemsPerPage = +json.items_per_page;
+      console.log(this.totalItems);
+      // this.courses.forEach(function (course){
+      //   document.getElementById("btn-"+course._id).innerHTML = document.getElementById("btn-"+course._id)
+      //   .innerHTML == "Disable" ? "Enable" : "Disable";
+      // });
+
+    });
+ }
+  handlePageChange(event) {
+    this.page = event;
+    this.reloadData(this.page);
+
+  }
+ 
 }

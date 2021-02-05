@@ -8,19 +8,30 @@
     </div>
   </form>
 
-  <hr>
-<div class="row">
-    <div class="col-xs-12" style="margin: 10px;">
-      <app-course-item *ngFor="let courseEl of courses" [course]="courseEl"></app-course-item>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Courses</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Follow</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems: totalItems}">
+            <td>{{course.name}}</td>
+            <td>
+                <button id="btn-{{course._id}}" (click)="followCourse(course._id)" class="btn btn-success" style="margin-left: 10px">Follow</button>
+            </td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+    <div class="text-center">
+      <pagination-controls  (pageChange)="handlePageChange($event)"></pagination-controls>
     </div>
   </div>
-
-  <hr>
-  <div>
-    <ul class="nav nav-pills">
-      <li class="nav-item" *ngFor="let p of pages; let i = index">
-        <a class="nav-item" href="" (click)="setPage(i,$event)">{{i}}</a>
-      </li>
-    </ul>
-  </div>
-</body>

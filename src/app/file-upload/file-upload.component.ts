@@ -21,7 +21,7 @@ export class FileUploadComponent implements OnInit {
 
  ngOnInit(): void { 
 
-  this.courseService.getAllCourses('0').then((json) => {
+  this.courseService.getAllCourses('0',"10").then((json) => {
     this.courses = json.courses;
     console.log("the course"+this.courses);})
  } 
