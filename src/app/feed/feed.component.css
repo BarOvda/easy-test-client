@@ -1,0 +1,21 @@
+
+div.feeddisplay{
+    display: grid;
+  
+
+  
+  
+  
+        justify-content: center;
+        align-items: center;
+  
+      
+
+    grid-template-columns: 500px 500px ;
+    grid-gap: 10px;
+  
+  }
+  div.gridFeed{
+    display: grid;
+  
+  }

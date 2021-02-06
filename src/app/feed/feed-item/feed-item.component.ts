@@ -11,12 +11,12 @@ export class FeedItemComponent implements OnInit {
   @Input() summary:Summary;  
    card:Card;
 
-  
+
   constructor() { }
 
   ngOnInit(): void {
     this.card  = new Card(
-      ["read more"],"simaster A 2019", ["favorite"], "https://www.infragistics.com/angular-demos/assets/images/card/media/ny.jpg"
+      ["read more"],"simaster A 2019", ["favorite"], "http://127.0.0.1:8887/An_Intelligent_Auto_Parking_System_for_Vehicles%20(1).pdf"
       , this.summary.title,
       this.summary.title
   );
