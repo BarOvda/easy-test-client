@@ -32,17 +32,33 @@
             <ul class="nav navbar-nav navbar-center">
                 <li><a routerLink="/">Home</a></li>
                 <li><a routerLink="/courses">Add Course</a></li>
-                  <!-- <li><a routerLink="/exams">My Exams</a></li>
-                  <li><a routerLink="/exam-detail">Exam Detail</a>
-                  <li><a routerLink="/explore">Explore</a></li> -->
-                  <li><a routerLink="/explore">Settings</a></li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Courses
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <div>
+                    <a class="dropdown-item" routerLink = "/my-courses">My Courses</a>
+                  </div>
+                  <div>
+                    <a class="dropdown-item" routerLink = "/courses">Follow Courses</a>
+                  </div>
+                  </div>
+                </li>
+
+                  <!-- <li><a routerLink="/explore">Settings</a></li> -->
+                 <li><a routerLink="/upload-file">Upload File</a></li>
+
+    
+
             </ul>
           </div>
           <ul class="nav navbar-nav navbar-right" style="margin: 10px;">
             <li>HI, {{headerEmail}} </li>
             <li ><button  class="pull-right" (click)="logOut()">Log Out</button></li>
-              
-
+           
+          
           </ul>
         </ng-template>
       

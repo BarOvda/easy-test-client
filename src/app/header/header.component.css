@@ -18,3 +18,12 @@ input[type=text] {
   input[type=text]:focus {
     width: 100%;
   }
+
+  .dropdown:hover>.dropdown-menu {
+    display: block;
+
+  }
+
+  .dropdown-item{
+    padding-left: 7px;
+  }

@@ -9,9 +9,12 @@ import { SearchFilesComponent } from './search-files/search-files.component'
 import { HomeComponent } from './home/home.component'
 import { SignUpComponent } from './sign-up/sign-up.component'
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FollowedCoursesListComponent } from './followed-courses-list/followed-courses-list.component';
 const appRoutes: Routes=[
     { path: '',component: HomeComponent },
     {path: 'courses',component: SearchCoursesComponent },
+    {path: 'my-courses',component: FollowedCoursesListComponent },
+
     { path: 'exams',component: ExamListComponent },
     { path: 'search-page', component: SearchFilesComponent },
     { path: 'exam-detail',component: ExamDetailComponent },

@@ -1,0 +1,38 @@
+<body>
+    <form (ngSubmit)="onSearchCourse()">
+      <div class="container">
+        <input type="text" placeholder="Enter Course Name ..." [(ngModel)]="this.searchValue" name="Attribute" required>
+        <div class="clearfix">
+          <button type="submit" class="SEARCH">Search</button>
+        </div>
+      </div>
+    </form>
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Courses</h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of courses | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems: totalItems}">
+              <td>{{course.name}}</td>
+              <td>
+                  <button id="btn-{{course._id}}" (click)="followCourse(course._id)" class="btn btn-success" style="margin-left: 10px">Unfollow</button>
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+      <div class="text-center">
+        <pagination-controls  (pageChange)="handlePageChange($event)"></pagination-controls>
+      </div>
+    </div>
+  

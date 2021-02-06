@@ -55,6 +55,17 @@ export class UserService {
       console.log(json);
     });
   }
-
+  public unFollowCourse(courseId: string): Promise<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const options = { headers: headers};
+    return this.http.put<any>(`${environment.apiUrl}/users/unfollow-course/${courseId}`
+    ,null,options
+    )       
+    .toPromise()
+    .then(json=>{
+      console.log(json);
+    });
+  }
  
 }

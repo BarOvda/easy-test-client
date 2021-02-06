@@ -35,6 +35,21 @@ export class CourseService {
     .toPromise();
      return result;
   }
+  public async getFollowedCourses(page:string,perPage:string): Promise<any> {
+    let httpParams = new HttpParams().set("page",page).set("per_page",perPage);
+    
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const httpOptions = {
+      headers: headers,
+      params: httpParams
+    };
+    
+    const result = 
+     await this.http.get<any>(`${environment.apiUrl}/courses/followed-courses`,httpOptions)
+    .toPromise();
+     return result;
+  }
   public async searchCourseByKeyWord(keyWord:string): Promise<any> {
     const result =  
      await this.http.post<any>(`${environment.apiUrl}/courses/search/key-word`,keyWord)

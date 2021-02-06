@@ -16,18 +16,33 @@ import { LogInComponent } from './log-in/log-in.component';
 import { MainLogoComponent } from './main-logo/main-logo.component';
 import { SearchFilesComponent } from './search-files/search-files.component';
 import { UserItemComponent } from './search-files/user-item/user-item.component';
-import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SearchCoursesComponent } from './search-courses/search-courses.component';
-import { CourseItemComponent } from './search-courses/course-item/course-item.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { IgxDropDownModule, IgxButtonModule, IgxToggleModule } from "igniteui-angular";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FeedComponent } from './feed/feed.component';
-
+import {MatIconModule} from "@angular/material/icon";
+import { ReactiveFormsModule} from '@angular/forms';
+import {
+  // MatButtonModule,
+  // MatFormFieldModule,
+  
+  // MatInputModule,
+  // MatListModule,
+  // MatSelectModule,
+  // MatSidenavModule,
+  MatCardModule,
+  
+  //MatTableModule
+} from "@angular/material/card";
+import { FollowedCoursesListComponent } from './followed-courses-list/followed-courses-list.component';
+// import { MatFormField, MatLabel } from '@angular/material/form-field';
+// import { MatLabel } from '@angular/material/form-field/label';
+// import { MatFormField } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,13 +60,13 @@ import { FeedComponent } from './feed/feed.component';
     MainLogoComponent,
     SearchFilesComponent,
     UserItemComponent,
-    FileUploaderComponent,
     HomeComponent,
     SignUpComponent,
     SearchCoursesComponent,
-    CourseItemComponent,
+
     FileUploadComponent,
-    FeedComponent
+    FeedComponent,
+    FollowedCoursesListComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +77,13 @@ import { FeedComponent } from './feed/feed.component';
 	IgxButtonModule,
   IgxToggleModule,
   BrowserAnimationsModule,
-  NgxPaginationModule
+  NgxPaginationModule,
+  MatCardModule,
+  MatIconModule,
+  ReactiveFormsModule,
+  // MatFormField,
+  // MatLabel,
+  
   // MatButtonModule,
   // MatFormFieldModule,
   // MatInputModule,

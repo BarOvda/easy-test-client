@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Course } from 'src/models/course';
 import { CourseService } from 'src/services/course.service';
+import { FileService } from 'src/services/file.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -10,41 +12,40 @@ import { UserService } from 'src/services/user.service';
 })
 export class FileUploadComponent implements OnInit {
 
- // Variable to store shortLink from api response 
- shortLink: string = ""; 
- loading: boolean = false; // Flag variable 
- file: File = null; // Variable to store file 
-
+ form: FormGroup;
+ error: string;
+uploadResponse = { status: '', message: '', filePath: '' };
  public courses:Course[]=[];
- // Inject service  
- constructor(private userService: UserService,private courseService:CourseService) { } 
+   // Inject service  
+ constructor(private fileService:FileService,private formBuilder: FormBuilder,private userService: UserService,private courseService:CourseService) { } 
 
  ngOnInit(): void { 
 
   this.courseService.getAllCourses('0',"10").then((json) => {
     this.courses = json.courses;
     console.log("the course"+this.courses);})
+
+    this.form = this.formBuilder.group({
+      summary: ['']
+    });
  } 
 
- // On file Select 
- onChange(event) { 
-     this.file = event.target.files[0]; 
- } 
 
- // OnClick of button Upload 
- onUpload() { 
-     this.loading = !this.loading; 
-     console.log(this.file); 
-    //  this.fileUploadService.upload(this.file).subscribe( 
-    //      (event: any) => { 
-    //          if (typeof (event) === 'object') { 
+onFileChange(event) {
+  if (event.target.files.length > 0) {
+    const file = event.target.files[0];
+    this.form.get('summary').setValue(file);
+  }
+}
 
-    //              // Short link via api response 
-    //              this.shortLink = event.link; 
+onSubmit() {
+  const formData = new FormData();
+  formData.append('file', this.form.get('summary').value);
 
-    //              this.loading = false; // Flag variable  
-    //          } 
-    //      } 
-    //  ); 
- } 
+  this.fileService.uploadFile(formData).then(res=>{
+     this.uploadResponse = res;
+  }).catch(err=>{
+    this.error = err
+  });
+}
 }

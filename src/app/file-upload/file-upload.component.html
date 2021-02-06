@@ -1,26 +1,76 @@
 <!-- 
-<button class="button" igxButton="raised" [igxToggleAction]="dropdown"
-[igxDropDownItemNavigation]="dropdown">Options</button>
-<igx-drop-down #dropdown>
-<igx-drop-down-item *ngFor="let course of courses">
-    {{ course.name }}
-</igx-drop-down-item>
-</igx-drop-down> -->
+<form [formGroup]="uploadFile" (ngSubmit)="onSubmit()">
 
-<!-- 
-<mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let course of courses" [value]="option">
-      {{course.name}}
-    </mat-option>
-  </mat-autocomplete> -->
-<!-- Shareable short link of  uoloaded file -->
-<!-- <div class="container text-center jumbotron"
-    *ngIf="shortLink"> 
-    <h2> Visit Here</h2> 
-    <a href="{{shortLink}}">{{shortLink}}</a> 
-</div> 
-   -->
-<!--Flag variable is used here-->
-<!-- <div class="container" *ngIf="loading"> 
-    <h3>Loading ...</h3> 
-</div>  -->
+
+<input type="file" formControlName="uploadFileButton" /> 
+
+<mat-card> 
+
+<mat-card-actions>   
+
+   <button mat-button color="warn" (click)="onSubmitFile()">   
+
+         <mat-icon>upload file</mat-icon>   
+
+          Upload   
+
+      </button>   
+
+ </mat-card-actions>   
+
+ </mat-card> 
+
+ <button type="submit">Submit</button>
+</form>  -->
+
+
+<!-- <form [formGroup]="form" (ngSubmit)="onSavePost()">
+  <mat-form-field appearance="fill">
+  <mat-label>Title</mat-label>
+  <input type="text" placeholder="Title" formControlName="title"   matInput>
+  <mat-error *ngIf="!form.get('title').valid">Please enter a valid  title</mat-error>
+  </mat-form-field>
+  <br>
+  <button type="button" mat-stroked-button
+  (click)="fileUplaoder.click()">Upload</button>
+  <br>
+  <input type="file" #fileUplaoder (change)="onSelect($event)">
+  <div class="preview-image" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+  <img [src]="imagePreview" [alt]="form.value.title">
+  </div>
+  <br>
+  <mat-form-field appearance="fill">
+  <mat-label>Description</mat-label>
+  <textarea placeholder="Description" formControlName="description"
+  rows="6" matInput>
+  </textarea>
+  <mat-error *ngIf="!form.get('description').valid">Please enter a valid description</mat-error>
+  </mat-form-field>
+  <br>
+  <button type="submit" mat-raised-button color="primary"> Create </button>
+  </form> -->
+
+  <h1>Upload your Summary!</h1>
+<div>
+  <div *ngIf="error">
+    {{ error.message }}
+  </div>
+  <div *ngIf="uploadResponse.status === 'error'">
+    {{ uploadResponse.message }}
+  </div>
+  <div *ngIf="uploadResponse.status === 'progress'">
+
+
+    <div role="progressbar" [style.width.%]="uploadResponse.message" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      {{uploadResponse.message}}%
+    </div>
+
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <input type="file" name="summary" (change)="onFileChange($event)" />
+    <button type="submit">Upload</button>
+
+  </form>
+</div>
