@@ -19,8 +19,19 @@ export class CourseService {
  
    }
 
-
-  public async getAllCourses(page:string,perPage:string): Promise<any> {
+   public async getAllCourses(): Promise<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const httpOptions = {
+      headers: headers
+    };
+    
+    const result = 
+     await this.http.get<any>(`${environment.apiUrl}/courses/all`,httpOptions)
+    .toPromise();
+     return result;
+  }
+  public async getUnFollowedCourses(page:string,perPage:string): Promise<any> {
     let httpParams = new HttpParams().set("page",page).set("per_page",perPage);
     
     let headers = new HttpHeaders();

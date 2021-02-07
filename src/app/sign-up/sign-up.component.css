@@ -1,0 +1,47 @@
+.container {
+    padding: 50px 200px 50px 80px;
+  
+  }
+  body {
+    padding: 20px 50px 20px 50px;
+  }
+  input[type=text],
+  input[type=password] {
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus,
+  input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0px 20px 0px;
+    margin: 100px 0 0 50px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 1;
+  }
+  
+  .alert {
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f44336;
+    color: white;
+  }

@@ -26,23 +26,17 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FeedComponent } from './feed/feed.component';
 import {MatIconModule} from "@angular/material/icon";
 import { ReactiveFormsModule} from '@angular/forms';
-import {
-  // MatButtonModule,
-  // MatFormFieldModule,
-  
-  // MatInputModule,
-  // MatListModule,
-  // MatSelectModule,
-  // MatSidenavModule,
-  MatCardModule,
-  
-  //MatTableModule
-} from "@angular/material/card";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+import {MatCardModule} from "@angular/material/card";
 import { FollowedCoursesListComponent } from './followed-courses-list/followed-courses-list.component';
 import { FeedItemComponent } from './feed/feed-item/feed-item.component';
-// import { MatFormField, MatLabel } from '@angular/material/form-field';
-// import { MatLabel } from '@angular/material/form-field/label';
-// import { MatFormField } from '@angular/material/form-field';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { LandPageComponent } from './land-page/land-page.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +60,8 @@ import { FeedItemComponent } from './feed/feed-item/feed-item.component';
     FileUploadComponent,
     FeedComponent,
     FollowedCoursesListComponent,
-    FeedItemComponent
+    FeedItemComponent,
+    LandPageComponent
   ],
   imports: [
     BrowserModule,
@@ -84,15 +79,10 @@ import { FeedItemComponent } from './feed/feed-item/feed-item.component';
   IgxButtonModule,
 	IgxIconModule,
 	IgxCardModule,
-	IgxRippleModule
-
-  // MatFormField,
-  // MatLabel,
-  
-  // MatButtonModule,
-  // MatFormFieldModule,
-  // MatInputModule,
-  // MatRippleModule,
+	IgxRippleModule,
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatInputModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

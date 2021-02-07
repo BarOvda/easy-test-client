@@ -37,6 +37,7 @@ export class FileService {
   const courseAppID = '5fe2251d1cec1f103c2a90b7';
   headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
   const options = { headers: headers};
+  //console.log(data);
   return this.http.put<any>(`${environment.apiUrl}/summaries/upload${courseAppID}`
   ,data,options
   )       

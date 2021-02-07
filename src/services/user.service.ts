@@ -22,6 +22,19 @@ export class UserService {
     }
    }
 
+   public signUp(data): Promise<any> {
+   // console.log(data.getAll('name'));
+    
+    return this.http.put<any>(`${environment.apiUrl}/users/sign-up`,data)
+    .toPromise()
+    .then(json=>{
+      
+      this.user = json["user"];
+      this.cookieServise.set("user",JSON.stringify(json.user));
+      this.cookieServise.set("token",json.token);
+    });
+  }
+
 
   public login(email: string,password:string): Promise<any> {
     return this.http.post<any>(`${environment.apiUrl}/users/login`,{email:email,password:password})
@@ -33,10 +46,6 @@ export class UserService {
       this.cookieServise.set("user",JSON.stringify(json.user));
       this.cookieServise.set("token",json.token);
     });
-  }
-  public check(email: string): Promise<any> {
-    
-    return this.http.get<User>("http://localhost:8091/users/login").toPromise();
   }
 
   public logOut(){

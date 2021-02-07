@@ -7,9 +7,7 @@ export class User {
     examsDirectories:  [string];
     imageUrl: string;
     followedCourses:[string];
-    role: string;
     name: string;
-    avatar: string;
     _id:string;
 }
 

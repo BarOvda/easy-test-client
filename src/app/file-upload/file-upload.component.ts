@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Course } from 'src/models/course';
 import { CourseService } from 'src/services/course.service';
 import { FileService } from 'src/services/file.service';
 import { UserService } from 'src/services/user.service';
+import { map,startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-file-upload',
@@ -11,6 +13,10 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
+  myControl = new FormControl();
+  options: Course[]=[];
+  filteredOptions: Observable<Course[]>;
+
 
  form: FormGroup;
  error: string;
@@ -21,15 +27,43 @@ uploadResponse = { status: '', message: '', filePath: '' };
 
  ngOnInit(): void { 
 
-  this.courseService.getAllCourses('0',"10").then((json) => {
-    this.courses = json.courses;
-    console.log("the course"+this.courses);})
+  
 
+  this.courseService.getAllCourses().then((json) => {
+    this.courses = json.courses;
+
+    let i;
+    for(i=0;i<this.courses.length;i++){
+      this.options.push(this.courses[i]);
+    }
+    console.log("the course"+this.courses);})
+    
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+    
+    map(value => this._filter(value))
+    );
+    
     this.form = this.formBuilder.group({
       summary: ['']
     });
  } 
 
+ private _filter(value: string): Course[] {
+   
+  const filterValue = value.toLowerCase();
+  console.log(filterValue);
+  let result = [];
+  this.options.forEach(course=>{
+    if(course.name.toLowerCase().includes(filterValue))
+      result.push(course);
+  })
+  
+  return result;
+}
+getTitle(bookId: string) {
+  return this.courses.find(book => book._id === bookId).name;
+}
 
 onFileChange(event) {
   if (event.target.files.length > 0) {
@@ -48,4 +82,19 @@ onSubmit() {
     this.error = err
   });
 }
+
+getCourse(course){
+  console.log(course._id);
+  
+  // let url = 'https://jsonplaceholder.typicode.com/posts?userId='+userId;
+  // this.http.get(`${url}`).subscribe(posts => {
+  //     this.posts = [...posts];
+  // });
+}
+public valueMapper = (key) => {
+  console.log(key);
+  let selection = this.courses.find(e => e.name === key.name);
+  if (selection)
+    return selection.name;
+};
 }

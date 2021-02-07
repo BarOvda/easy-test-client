@@ -35,7 +35,7 @@ export class SearchCoursesComponent implements OnInit {
   reloadData(page:number) {
     this.courses = [];
 
-    this.courseService.getAllCourses(this.page.toString(),this.itemsPerPage.toString()).then((json) => {
+    this.courseService.getFollowedCourses(this.page.toString(),this.itemsPerPage.toString()).then((json) => {
       this.courses = json.courses;
       this.page = +json.current_page;
       this.totalItems = +json.total_items;
