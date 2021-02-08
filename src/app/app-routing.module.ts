@@ -9,8 +9,10 @@ import { HomeComponent } from './home/home.component'
 import { SignUpComponent } from './sign-up/sign-up.component'
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FollowedCoursesListComponent } from './followed-courses-list/followed-courses-list.component';
+import { LandPageComponent } from './land-page/land-page.component';
 const appRoutes: Routes=[
-    { path: '',component: HomeComponent },
+    { path: 'feed',component: HomeComponent },
+    { path: '',component: LandPageComponent },
     {path: 'courses',component: SearchCoursesComponent },
     {path: 'my-courses',component: FollowedCoursesListComponent },
 

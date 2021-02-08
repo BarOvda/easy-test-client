@@ -23,7 +23,31 @@ input[type=text] {
     display: block;
 
   }
-
+.navbar-logo{
+  size: 3px;
+  padding-top: 3px;
+}
   .dropdown-item{
     padding-left: 7px;
   }
+  .navbar{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  ul li {
+    padding-top: 8px;
+  }
+  .user{
+    padding-top: 15px;
+    padding-right: 10px;
+  }
+  p{
+      font-size: medium;
+  }
+ 

@@ -45,7 +45,7 @@ export class SignUpComponent implements OnInit {
   isValidForm() { return this.isValid; }
 
   goTOHomePage(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/feed']);
   }
   
 onFileChange(event) {

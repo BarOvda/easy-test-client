@@ -5,10 +5,10 @@
               <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
             </button>
             <!--a routerLink="/feed" class="navbar-brand">Easy Test!</a-->
-            <a routerLink="/"><div class="center">
+            <a routerLink="/"><div class="navbar-logo">
                 <img
                   src="https://lh5.googleusercontent.com/BhhgMLODm65M2l8bSyf9Dv4h2P5PdbCmunbiAZnAGHlZvvRDb182CDDoU5UOtueeH2GH8j3xtqL2eqqJl3yjAkf7GsJuekOY_7XDhElGAB6fPDDF_vEvBcqHNHEP6Qf8NERuUBO68VU"
-                  width="80" height="80" alt="logo">
+                  width="65" height="65" alt="logo">
               </div>
             </a>
           </div>
@@ -30,7 +30,7 @@
         <ng-template #elseBlock>
           <div>
             <ul class="nav navbar-nav navbar-center">
-                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/feed">Home</a></li>
                 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,9 +53,9 @@
 
             </ul>
           </div>
-          <ul class="nav navbar-nav navbar-right" style="margin: 10px;">
-            <li>HI, {{headerEmail}} </li>
-            <li ><button  class="pull-right" (click)="logOut()">Log Out</button></li>
+          <ul class="nav navbar-nav navbar-right" >
+            <li  class="user"><p>HI, {{headerEmail}}</p> </li>
+            <li><a (click)="logOut()" href="#" >Log Out</a></li>
            
           
           </ul>

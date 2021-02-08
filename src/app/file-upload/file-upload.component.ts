@@ -85,11 +85,8 @@ onSubmit() {
 
 getCourse(course){
   console.log(course._id);
+                                                                                                                                                                                                                                                                                                                                   
   
-  // let url = 'https://jsonplaceholder.typicode.com/posts?userId='+userId;
-  // this.http.get(`${url}`).subscribe(posts => {
-  //     this.posts = [...posts];
-  // });
 }
 public valueMapper = (key) => {
   console.log(key);
