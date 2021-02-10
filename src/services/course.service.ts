@@ -31,6 +31,12 @@ export class CourseService {
     .toPromise();
      return result;
   }
+  public async getAllCourseAppearances(courseId:string): Promise<any> {
+    const result = 
+     await this.http.get<any>(`${environment.apiUrl}/courses/all-appearances/${courseId}`)
+    .toPromise();
+     return result;
+  }
   public async getUnFollowedCourses(page:string,perPage:string): Promise<any> {
     let httpParams = new HttpParams().set("page",page).set("per_page",perPage);
     
@@ -42,7 +48,7 @@ export class CourseService {
     };
     
     const result = 
-     await this.http.get<any>(`${environment.apiUrl}/courses/all-courses`,httpOptions)
+     await this.http.get<any>(`${environment.apiUrl}/courses/allcourses`,httpOptions)
     .toPromise();
      return result;
   }

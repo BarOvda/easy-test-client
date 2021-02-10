@@ -14,32 +14,50 @@
     </div>
 
   </div>
-
-
-  
-    
-
-
   <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-    
+
     <mat-form-field class="example-full-width">
       <mat-label>Course</mat-label>
+      
       <input type="text"
-             placeholder="Pick one"
-             aria-label="Number"
+           
              matInput
              [formControl]="myControl"
-             [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" 
-      [displayWith]="valueMapper"
-
+             [matAutocomplete]="autoCourse"
+             name="course"
+            >
+      <mat-autocomplete #autoCourse="matAutocomplete" 
+      [displayWith]="displayFn"
       (optionSelected)='getCourse($event.option.value)'>
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option.name}}
         </mat-option>
       </mat-autocomplete>
+    
     </mat-form-field>
-  
+    
+    <mat-form-field class="example-full-width"    
+       [ngClass]="{'hide-autocomplete': !showAutocomplete}"
+    >
+      <mat-label>Course Appearance</mat-label>
+      <input type="text"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="autoCourseApp"
+             name="courseApp"
+
+            >
+      <mat-autocomplete #autoCourseApp="matAutocomplete" 
+      [displayWith]="displayFnApp"
+      (optionSelected)='getCourseApp($event.option.value)'>
+        <mat-option *ngFor="let app of filteredOptionsApp | async" [value]="app" >
+          {{app.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    
+
+    
     
     <input type="file" name="summary" (change)="onFileChange($event)" />
     <button type="submit">Upload</button>

@@ -28,7 +28,7 @@ export class FollowedCoursesListComponent implements OnInit {
 
   async followCourse(coureId:string){
     await this.userService.unFollowCourse(coureId);
-    this.reloadData(0);
+    this.reloadData(1);
   }
   async onSearchCourse() {
     const searchResults = this.courseService

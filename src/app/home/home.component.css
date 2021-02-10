@@ -24,3 +24,10 @@
     background-color: #8585851a;
     
   }
+  .bg-image{
+     padding-bottom: 20px;
+    padding-top: 50px;
+  }
+  .home{
+    background-image:"../assets/pattern.jpg";
+  }

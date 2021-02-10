@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import {CookieService} from 'ngx-cookie-service'
@@ -16,11 +16,16 @@ export class HeaderComponent implements OnInit{
     headerEmail: string;
     fileSearch: string;
     
+    @Output() messageEvent = new EventEmitter<string>();
+
+
     constructor(private service: UserService, private router: Router,private cookieService:CookieService) { }
   
     ngOnInit(): void {
     }
-  
+   sendMessage() {
+    this.messageEvent.emit("sec")
+  }
     emailName() {
       const isAuth = this.cookieService.check("user");
       if(isAuth){

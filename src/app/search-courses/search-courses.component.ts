@@ -27,7 +27,7 @@ export class SearchCoursesComponent implements OnInit {
 
   async followCourse(coureId:string){
     await this.userService.followCourse(coureId);
-    this.reloadData(0);
+    this.reloadData(1);
   }
   async onSearchCourse() {
     const searchResults = this.courseService
@@ -35,12 +35,13 @@ export class SearchCoursesComponent implements OnInit {
   reloadData(page:number) {
     this.courses = [];
 
-    this.courseService.getFollowedCourses(this.page.toString(),this.itemsPerPage.toString()).then((json) => {
+    this.courseService.getUnFollowedCourses(this.page.toString(),this.itemsPerPage.toString()).then((json) => {
       this.courses = json.courses;
+      console.log(json.courses);
       this.page = +json.current_page;
       this.totalItems = +json.total_items;
       this.itemsPerPage = +json.items_per_page;
-      console.log(this.totalItems);
+      console.log(this.page);
       // this.courses.forEach(function (course){
       //   document.getElementById("btn-"+course._id).innerHTML = document.getElementById("btn-"+course._id)
       //   .innerHTML == "Disable" ? "Enable" : "Disable";

@@ -6,6 +6,8 @@ import { CourseService } from 'src/services/course.service';
 import { FileService } from 'src/services/file.service';
 import { UserService } from 'src/services/user.service';
 import { map,startWith } from 'rxjs/operators';
+import { CourseAppearance } from 'src/models/courseAppearance';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-upload',
@@ -14,20 +16,35 @@ import { map,startWith } from 'rxjs/operators';
 })
 export class FileUploadComponent implements OnInit {
   myControl = new FormControl();
+  
   options: Course[]=[];
   filteredOptions: Observable<Course[]>;
 
+  appOptions: CourseAppearance[]=[];
+  filteredOptionsApp: Observable<CourseAppearance[]>;
+  
 
  form: FormGroup;
  error: string;
+ 
 uploadResponse = { status: '', message: '', filePath: '' };
  public courses:Course[]=[];
-   // Inject service  
- constructor(private fileService:FileService,private formBuilder: FormBuilder,private userService: UserService,private courseService:CourseService) { } 
+  isDisabled: boolean;
+  showAutocomplete: boolean = false;
+  selectedCourseAppId: string;
+   
+ constructor(private router: Router,private fileService:FileService,private formBuilder: FormBuilder,private userService: UserService,private courseService:CourseService) { } 
 
  ngOnInit(): void { 
 
-  
+  this.isDisabled = true;
+
+  this.form = this.formBuilder.group({
+    course: [''],
+    courseApp: [''],
+    summary: ['']
+  });
+  this.form.get('course').disable();
 
   this.courseService.getAllCourses().then((json) => {
     this.courses = json.courses;
@@ -38,29 +55,34 @@ uploadResponse = { status: '', message: '', filePath: '' };
     }
     console.log("the course"+this.courses);})
     
+
     this.filteredOptions = this.myControl.valueChanges
     .pipe(
-    
-    map(value => this._filter(value))
+      startWith(''),
+      map(value => typeof value === 'string' ? value : value.name),
+      map(name => name ? this._filter(name) : this.options.slice())
     );
-    
-    this.form = this.formBuilder.group({
-      summary: ['']
-    });
+
+   
  } 
 
- private _filter(value: string): Course[] {
-   
-  const filterValue = value.toLowerCase();
-  console.log(filterValue);
-  let result = [];
-  this.options.forEach(course=>{
-    if(course.name.toLowerCase().includes(filterValue))
-      result.push(course);
-  })
-  
-  return result;
+ displayFn(course?: Course): string | undefined {
+  return course ? course.name : undefined;
 }
+displayFnApp(courseApp?: CourseAppearance): string | undefined {
+  return courseApp ? courseApp.name : undefined;
+}
+
+ private _filter(name: string): Course[] {
+  const filterValue = name.toLowerCase();
+    return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+}
+private _filterApp(name: string): CourseAppearance[] {
+  const filterValue = name.toLowerCase();
+  
+    return this.appOptions.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+}
+
 getTitle(bookId: string) {
   return this.courses.find(book => book._id === bookId).name;
 }
@@ -76,22 +98,37 @@ onSubmit() {
   const formData = new FormData();
   formData.append('file', this.form.get('summary').value);
 
-  this.fileService.uploadFile(formData).then(res=>{
-     this.uploadResponse = res;
+  this.fileService.uploadFile(formData,this.selectedCourseAppId).then(res=>{
+    // this.uploadResponse = res;
+    this.router.navigate(['/feed']);
   }).catch(err=>{
     this.error = err
   });
 }
 
-getCourse(course){
+async getCourseApp(courseApp){
+  this.selectedCourseAppId = courseApp._id;
+}
+async getCourse(course){
   console.log(course._id);
-                                                                                                                                                                                                                                                                                                                                   
+  const appearancesResults = await this.courseService.getAllCourseAppearances(course._id);
+  this.appOptions.length=0;
+  this.appOptions = appearancesResults.appearances;
+  if(this.appOptions.length>0){
+  this.showAutocomplete = true;
+    } else {
+   this.showAutocomplete = false;
+    }
+  console.log(this.appOptions);
+  this.form.get('courseApp').setValue(this.appOptions);
+  this.filteredOptionsApp = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => typeof value === 'string' ? value : value.name),
+      map(name => name ? this._filterApp(name) : this.appOptions.slice())
+    );
   
 }
-public valueMapper = (key) => {
-  console.log(key);
-  let selection = this.courses.find(e => e.name === key.name);
-  if (selection)
-    return selection.name;
-};
+
+
 }
