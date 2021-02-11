@@ -1,27 +1,27 @@
-<div data-aos="zoom-in">
+<div data-aos="zoom-in" class="item">
 
 <div class="sample-column card-wrapper">
     <igx-card class="card">
         <igx-card-media class ="image-container" height="300px">
             <!-- <img [src]="card.imageUrl"> -->
-
+            <div id="wrap">
             <iframe class="file-preview"
-    src="http://127.0.0.1:8887/An_Intelligent_Auto_Parking_System_for_Vehicles%20(1).pdf"
+            id="file-preview"
+            [src]="url | safe"
     frameBorder="100"
-    scrolling="none"
+    scrolling="no"
             
-    height="100%"
-    width="100%"
+   
     ></iframe>
-
+</div>
         </igx-card-media>
 
-        <igx-card-header>
+        <igx-card-header (click)="showFile()">
             <h3 igxCardHeaderTitle>{{ card.title }}</h3>
             <h5 igxCardHeaderSubtitle>{{ card.subtitle }}</h5>
         </igx-card-header>
 
-        <igx-card-content>
+        <igx-card-content routerLink = "/file">
             <p>{{ card.content }}</p>
         </igx-card-content>
 
@@ -34,7 +34,7 @@
                 <igx-icon>favorite</igx-icon>
             </button>
         </igx-card-actions>
-
+        <ngb-rating [(rate)]="currentRate" readonly="true"  max="5" class="rating"></ngb-rating>
     </igx-card>
 </div>
 </div>

@@ -7,7 +7,7 @@ import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-search-courses',
   templateUrl: './search-courses.component.html',
-  styleUrls: ['./search-courses.component.css']
+  styleUrls: ['./search-courses.component.scss']
 })
 export class SearchCoursesComponent implements OnInit {
   courses: Course[] = [];

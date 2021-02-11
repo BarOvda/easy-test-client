@@ -1,0 +1,20 @@
+.panel{
+    width: 80%;
+    align-items: center;
+    margin: auto;
+}
+.container{
+    width:fit-content;
+}
+.search-form{
+    
+
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    padding-bottom: 15px;
+}
+.SEARCH{
+    padding-left: 5px;
+    text-align: center;
+}

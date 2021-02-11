@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html>
-
-<body>
-
-  <form (ngSubmit)="onSubmitLogIn()" action="/action_page.php" style="border:1px solid #ccc">
-    <div class="container">
-      <h1>LOG-IN</h1>
-      <hr>
 
 
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" [(ngModel)]="email" name="email" required>
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required>
+    <form (ngSubmit)="onSubmitLogIn()"  >
+      <div id="login-box">
+        <div class="left">
+          <h1>Log In</h1>
+             
+          <input type="text" placeholder="Enter Email" [(ngModel)]="email" name="email" required>
+              
+          <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required>
+    
+          <button type="submit" class="social-signin">Log In</button>
 
-
-      <div class="clearfix">
-
-        <button type="submit" class="pull-right">Log In</button>
+        </div>
+        
+        <div class="right social">
+          <span class="loginwith">Sign in with<br />social network</span>
+          
+          <button class="social-signin facebook"><i class="fab fa-facebook"></i>Log in with facebook</button>
+          <button class="social-signin twitter">Log in with Twitter</button>
+          <button class="social-signin google">Log in with Google+</button>
+        </div>
       </div>
-      <div *ngIf="!isValidEmailCheack()" class="alert">Invalid Email or Password</div>
-    </div>
-  </form>
+    </form>
 
 
-</body>
 
-</html>

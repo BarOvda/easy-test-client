@@ -10,12 +10,10 @@ div.feeddisplay{
         align-items: center;
   
       
-
-    grid-template-columns: 500px 500px ;
+    grid-template-columns: 30% 30% 30% ;
     grid-gap: 10px;
   
   }
   div.gridFeed{
     display: grid;
-  
   }

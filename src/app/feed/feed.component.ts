@@ -21,8 +21,6 @@ export class FeedComponent implements OnInit {
 
     this.feedService.getFeed().then(json=> {
       this.summaries = json.data;
-      console.log(json);
-
     });
 
   }

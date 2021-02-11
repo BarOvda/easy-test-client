@@ -15,19 +15,22 @@
     padding-bottom: 100px;
     text-align: center;
   }
+  .main-title-feed{
+    padding-top: 50px;
+
+    
+    text-align: center;
+  }
   .deepshd {
     color: #0a0a09c7;
     letter-spacing: .1em;
     
   }
-  .logo{
-    background-color: #8585851a;
-    
-  }
+
   .bg-image{
      padding-bottom: 20px;
     padding-top: 50px;
   }
   .home{
-    background-image:"../assets/pattern.jpg";
+    background-image:url("../../assets/1657858.jpg");
   }

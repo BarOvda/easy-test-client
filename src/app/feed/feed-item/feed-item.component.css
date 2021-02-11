@@ -1,21 +1,40 @@
 .card-wrapper {
-    max-width: 400px;
-    min-width: 220px;
+    max-width: 30%;
+    min-width: 20%;
     height: 500px;
+    align-content: center;
+    text-align: center;
     
     
 }
 
   .image-container{
       height: 600px;
+      width: 300px;
     overflow: hidden;
   }
   .file-preview{
     height: 600px;
     overflow: hidden;
-  }
+ zoom: 3;  }
+
+ #wrap {border: 1px solid rgb(255, 255, 255);  max-width: 100%;; overflow: hidden; }
+ #file-preview{  border: 0px none; margin-left: 0px; height: 700px; margin-top: -80px; width: 110%;  overflow: hidden;}
+#file-preview { zoom: 0.75;  }
+.rating{
+  color: rgba(229, 245, 13, 0.89) !important;
+  font-size: 2.25rem;
+  padding-bottom: 5px;
+
+}
+
 .card{
+  margin-left: 50%;
     max-width: 400px;
-    min-width: 220px;
+    min-width: 400px;
     height: 500px;
+}
+
+.item{
+  padding-top: 50px;
 }

@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ExamsComponent } from './exams/exams.component';
@@ -35,6 +34,11 @@ import { FeedItemComponent } from './feed/feed-item/feed-item.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LandPageComponent } from './land-page/land-page.component';
+import { NgModule } from '@angular/core';
+import { FileDisplayComponent } from './file-display/file-display.component';
+import { SafePipe } from './helpers/SafePipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -45,7 +49,7 @@ import { LandPageComponent } from './land-page/land-page.component';
     HeaderComponent,
     ExamsComponent,
    // ReactiveFormsModule,
-
+   SafePipe,
     ExamDetailComponent,
     ExamListComponent,
     ExamItemComponent,
@@ -61,10 +65,12 @@ import { LandPageComponent } from './land-page/land-page.component';
     FeedComponent,
     FollowedCoursesListComponent,
     FeedItemComponent,
-    LandPageComponent
+    LandPageComponent,
+    FileDisplayComponent
   ],
   imports: [
     BrowserModule,
+    NgbModule ,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -83,6 +89,8 @@ import { LandPageComponent } from './land-page/land-page.component';
   MatAutocompleteModule,
   MatFormFieldModule,
   MatInputModule
+  
+  
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

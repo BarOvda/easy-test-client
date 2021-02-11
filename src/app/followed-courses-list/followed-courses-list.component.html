@@ -1,10 +1,10 @@
-<body>
-    <form (ngSubmit)="onSearchCourse()">
+
+<form (ngSubmit)="onSearchCourse()" class="search-form">
       <div class="container">
-        <input type="text" placeholder="Enter Course Name ..." [(ngModel)]="this.searchValue" name="Attribute" required>
-        <div class="clearfix">
+        <input type="text" class="test" placeholder="Enter Course Name ..." [(ngModel)]="this.searchValue" name="Attribute" required>
+        
           <button type="submit" class="SEARCH">Search</button>
-        </div>
+        
       </div>
     </form>
   

@@ -10,12 +10,13 @@ import { SignUpComponent } from './sign-up/sign-up.component'
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FollowedCoursesListComponent } from './followed-courses-list/followed-courses-list.component';
 import { LandPageComponent } from './land-page/land-page.component';
+import { FileDisplayComponent } from './file-display/file-display.component';
 const appRoutes: Routes=[
     { path: 'feed',component: HomeComponent },
     { path: '',component: LandPageComponent },
     {path: 'courses',component: SearchCoursesComponent },
     {path: 'my-courses',component: FollowedCoursesListComponent },
-
+    {path: 'file',component: FileDisplayComponent },
     { path: 'exams',component: ExamListComponent },
     { path: 'search-page', component: SearchFilesComponent },
     { path: 'exam-detail',component: ExamDetailComponent },

@@ -36,8 +36,8 @@
     
     </mat-form-field>
     
-    <mat-form-field class="example-full-width"    
-       [ngClass]="{'hide-autocomplete': !showAutocomplete}"
+    <mat-form-field class="example-full-width"  
+  
     >
       <mat-label>Course Appearance</mat-label>
       <input type="text"
@@ -45,8 +45,8 @@
              [formControl]="myControl"
              [matAutocomplete]="autoCourseApp"
              name="courseApp"
-
-            >
+             [readonly]="!showAutocomplete"
+                         >
       <mat-autocomplete #autoCourseApp="matAutocomplete" 
       [displayWith]="displayFnApp"
       (optionSelected)='getCourseApp($event.option.value)'>
@@ -59,8 +59,32 @@
 
     
     
-    <input type="file" name="summary" (change)="onFileChange($event)" />
+    <input type="file" name="summary"  (change)="onFileChange($event)" />
+    
     <button type="submit">Upload</button>
 
   </form>
 </div>
+
+
+
+
+
+<!-- <input  type="file" accept="image/*"  name="summary" id="file-upload-form" class="uploader" (change)="onFileChange($event)" />
+
+<label for="file-upload" id="file-drag">
+  <img id="file-image" src="#" alt="Preview" class="hidden">
+  <div id="start">
+    <i class="fa fa-download" aria-hidden="true"></i>
+    <div>Select a file or drag here</div>
+    <div id="notimage" class="hidden">Please select an image</div>
+    <span id="file-upload-btn" class="btn btn-primary" >Select a file</span>
+  </div>
+  <div id="response" class="hidden">
+    <div id="messages"></div>
+    <progress class="progress" id="file-progress" value="0">
+      <span>0</span>%
+    </progress>
+  </div>
+</label>
+<button type="submit">Upload</button> -->

@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit{
     emailName() {
       const isAuth = this.cookieService.check("user");
       if(isAuth){
-        console.log(this.service.user.email);
          this.headerEmail = this.service.user.email;
        return true;
       }else{

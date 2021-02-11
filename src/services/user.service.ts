@@ -61,7 +61,6 @@ export class UserService {
     )       
     .toPromise()
     .then(json=>{
-      console.log(json);
     });
   }
   public unFollowCourse(courseId: string): Promise<any> {
@@ -73,7 +72,6 @@ export class UserService {
     )       
     .toPromise()
     .then(json=>{
-      console.log(json);
     });
   }
  

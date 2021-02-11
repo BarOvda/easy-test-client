@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css']
+  styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
   myControl = new FormControl();
@@ -74,6 +74,7 @@ displayFnApp(courseApp?: CourseAppearance): string | undefined {
 }
 
  private _filter(name: string): Course[] {
+
   const filterValue = name.toLowerCase();
     return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
 }
@@ -110,7 +111,8 @@ async getCourseApp(courseApp){
   this.selectedCourseAppId = courseApp._id;
 }
 async getCourse(course){
-  console.log(course._id);
+  this.showAutocomplete=false;
+
   const appearancesResults = await this.courseService.getAllCourseAppearances(course._id);
   this.appOptions.length=0;
   this.appOptions = appearancesResults.appearances;
