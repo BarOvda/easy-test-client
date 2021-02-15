@@ -19,7 +19,7 @@ export class FileService {
   headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
   const options = { headers: headers};
   //console.log(data);
-  return this.http.put<any>(`${environment.apiUrl}/summaries/upload${courseAppId}`
+  return this.http.put<any>(`${environment.apiUrl}/summaries/upload/${courseAppId}`
   ,data,options
   )       
   .toPromise()

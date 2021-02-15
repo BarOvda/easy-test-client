@@ -66,7 +66,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FollowedCoursesListComponent,
     FeedItemComponent,
     LandPageComponent,
-    FileDisplayComponent
+    FileDisplayComponent,
+
   ],
   imports: [
     BrowserModule,

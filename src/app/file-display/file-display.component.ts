@@ -12,7 +12,7 @@ import { FileService } from 'src/services/file.service';
   providers: [NgbRatingConfig]
 
 })
-export class FileDisplayComponent implements OnInit {
+export class  FileDisplayComponent implements OnInit {
   url:string;
   ctrl = new FormControl(null, Validators.required);
   rating:number;
@@ -30,12 +30,12 @@ export class FileDisplayComponent implements OnInit {
     this.ctrl.setValue(-1);
     console.log(this.summary);
     this.rating = -1;
-    let postFix = this.summary.pathUrl.split("\\")[2];
+    
    
-    this.url =`http://127.0.0.1:8887/${postFix}`;
+    this.url =this.summary.pathUrl;
     console.log(this.url);
 
-    
+
     this.ctrl.valueChanges.subscribe(rate => {
      console.log(rate);
      

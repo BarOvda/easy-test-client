@@ -24,6 +24,7 @@
     "@igniteui/material-icons-extended": "^2.4.0",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "aos": "^2.3.4",
+    "aws-sdk": "^2.843.0",
     "bootstrap": "^3.4.1",
     "font-awesome": "^4.7.0",
     "gsap": "^3.6.0",

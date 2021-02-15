@@ -4,6 +4,8 @@ import { Card } from "../../../models/card";
 import * as AOS from 'aos';
 import { Router } from '@angular/router';
 import { FileService } from 'src/services/file.service';
+import { HttpClient } from '@angular/common/http';
+// import * as AWS from 'aws-sdk';
 
 @Component({
   selector: 'app-feed-item',
@@ -16,13 +18,32 @@ export class FeedItemComponent implements OnInit {
    currentRate:number;
   url:string;
 
-  constructor(private router: Router,private fileService:FileService) { }
+  constructor(private http: HttpClient,private router: Router,private fileService:FileService) { }
 
   ngOnInit(): void {
+    // AWS.config.credentials = new AWS.Credentials({
+    //   accessKeyId: 'AKIAIBJG6PTZRSMW2JSQ', secretAccessKey: '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'
+    // });
 
-    let postFix = this.summary.pathUrl.split("\\")[2];
-   
-    this.url =`http://127.0.0.1:8887/${postFix}`;
+    // const params = {
+    //   Bucket: 'easy-test-s3',
+    //   Key: 'files/1613356310142-exams2Fcourse90904-year2018-semester3-moed2.pdf'
+    // };
+
+    
+    // let s3 = new AWS.S3();
+
+    // s3.getObject(params, function(err, data) {
+    //   if (err) {
+    //     console.error(err); // an error occurred
+    //   } else {
+    //     const string = new TextDecoder('utf-8').decode(data.Body);
+    //     console.log(da);
+    //   }
+    // });
+    this.url =this.summary.pathUrl;
+    
+    //this.url =`http://127.0.0.1:8887/${postFix}`;
 
     this.currentRate = this.summary.rank;
     console.log(this.summary.pathUrl);
@@ -37,7 +58,7 @@ export class FeedItemComponent implements OnInit {
     });
 
     this.card  = new Card(
-      ["read more"],"simaster A 2019", ["favorite"], "http://127.0.0.1:8887/An_Intelligent_Auto_Parking_System_for_Vehicles%20(1).pdf"
+      ["read more"],"simaster A 2019", ["favorite"],  this.url
       , this.summary.title,
       this.summary.title
   );
