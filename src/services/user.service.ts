@@ -74,5 +74,13 @@ export class UserService {
     .then(json=>{
     });
   }
- 
+  // GET /users/directories
+//router.get('/directories/:userId',isAuth, usersController.getUserDirectories);
+public async getUserExamDirectories(): Promise<any> {
+  let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const options = { headers: headers};
+    return this.http.get<any>(`${environment.apiUrl}/users/directories/${this.user._id}`,options).toPromise();
+}
+  
 }

@@ -11,6 +11,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FollowedCoursesListComponent } from './followed-courses-list/followed-courses-list.component';
 import { LandPageComponent } from './land-page/land-page.component';
 import { FileDisplayComponent } from './file-display/file-display.component';
+import { ExamDirectoryComponent } from 'src/app/exam-directory/exam-directory.component';
 const appRoutes: Routes=[
     { path: 'feed',component: HomeComponent },
     { path: '',component: LandPageComponent },
@@ -23,6 +24,7 @@ const appRoutes: Routes=[
     { path: 'log-in',component: LogInComponent },
     { path: 'sign-up',component:SignUpComponent  },
     { path: 'upload-file', component: FileUploadComponent },
+    { path: 'exam-directory', component: ExamDirectoryComponent},
     { path: '**', redirectTo: '/'}
 
 ];
