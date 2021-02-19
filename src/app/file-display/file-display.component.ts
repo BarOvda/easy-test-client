@@ -53,9 +53,4 @@ rated(){
     return true;
   }
 
-
-
-  
-
-
 }

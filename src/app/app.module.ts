@@ -38,6 +38,8 @@ import { NgModule } from '@angular/core';
 import { FileDisplayComponent } from './file-display/file-display.component';
 import { SafePipe } from './helpers/SafePipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ExamDirectoryComponent } from './exam-directory/exam-directory.component';
+
 
 
 
@@ -68,6 +70,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LandPageComponent,
     FileDisplayComponent,
 
+    ExamDirectoryComponent
   ],
   imports: [
     BrowserModule,

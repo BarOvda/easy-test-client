@@ -8,6 +8,7 @@ import { UserService } from 'src/services/user.service';
 import { map,startWith } from 'rxjs/operators';
 import { CourseAppearance } from 'src/models/courseAppearance';
 import { Router } from '@angular/router';
+import { ExamDirectoryService } from 'src/services/exam-directory.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -33,7 +34,7 @@ uploadResponse = { status: '', message: '', filePath: '' };
   showAutocomplete: boolean = false;
   selectedCourseAppId: string;
    
- constructor(private router: Router,private fileService:FileService,private formBuilder: FormBuilder,private userService: UserService,private courseService:CourseService) { } 
+ constructor(private router: Router,private fileService:FileService,private formBuilder: FormBuilder,private userService: UserService,private courseService:CourseService, private examDirectoryService:ExamDirectoryService) { } 
 
  ngOnInit(): void { 
 
@@ -98,7 +99,7 @@ onFileChange(event) {
 onSubmit() {
   const formData = new FormData();
   formData.append('file', this.form.get('summary').value);
-
+ // this.examDirectoryService.uploadFileToExamDirectory(formData,)
   this.fileService.uploadFile(formData,this.selectedCourseAppId).then(res=>{
     // this.uploadResponse = res;
     this.router.navigate(['/feed']);

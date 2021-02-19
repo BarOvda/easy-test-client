@@ -1,0 +1,24 @@
+<div class="exam-directory">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2>Exam Directories</h2>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Course Id</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ExamDirectory of examDirectories">
+                <td>{{ExamDirectory.courseId}}</td>
+              </tr>
+            </tbody>
+            
+          </table>
+        </div>
+      </div>
+    
+    </div>
