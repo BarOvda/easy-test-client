@@ -14,16 +14,16 @@ export class FileService {
   constructor(private http: HttpClient, private cookieServise: CookieService) { }
 
 
-  public async uploadFile(data, courseAppId: string): Promise<any> {//,courseAppID: string
+  public  uploadFile(data, courseAppId: string): Promise<any> {//,courseAppID: string
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
     const options = { headers: headers };
     //console.log(data);
-    const json = await this.http.put<any>(`${environment.apiUrl}/summaries/upload/${courseAppId}`,
+    return this.http.put<any>(`${environment.apiUrl}/summaries/upload/${courseAppId}`,
       data, options
     )
       .toPromise();
-    console.log(json);
+    //console.log(json);
   }
 
   public async rateFile(rank: string, fileId: string): Promise<any> {//,courseAppID: string
