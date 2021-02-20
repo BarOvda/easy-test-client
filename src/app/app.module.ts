@@ -16,7 +16,7 @@ import { SearchFilesComponent } from './search-files/search-files.component';
 import { UserItemComponent } from './search-files/user-item/user-item.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { SearchCoursesComponent } from './search-courses/search-courses.component';
+import { SearchCoursesComponent } from './courses/search-courses/search-courses.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -28,17 +28,20 @@ import { ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {MatCardModule} from "@angular/material/card";
-import { FollowedCoursesListComponent } from './followed-courses-list/followed-courses-list.component';
+import { FollowedCoursesListComponent } from './courses/followed-courses-list/followed-courses-list.component';
 import { FeedItemComponent } from './feed/feed-item/feed-item.component';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LandPageComponent } from './land-page/land-page.component';
 import { NgModule } from '@angular/core';
-import { FileDisplayComponent } from './file-display/file-display.component';
 import { SafePipe } from './helpers/SafePipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ExamDirectoryComponent } from './exam-directory/exam-directory.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { CoursesComponent } from './courses/courses.component';
+import { FileDisplayComponent } from './files/file-display/file-display.component';
+import { FilesComponent } from './files/files.component';
 
 
 
@@ -69,8 +72,10 @@ import { ExamDirectoryComponent } from './exam-directory/exam-directory.componen
     FeedItemComponent,
     LandPageComponent,
     FileDisplayComponent,
-
-    ExamDirectoryComponent
+    ExamDirectoryComponent,
+    UpdateUserComponent,
+    CoursesComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,

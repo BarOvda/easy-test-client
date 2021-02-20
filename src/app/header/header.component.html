@@ -12,7 +12,7 @@
               </div>
             </a>
           </div>
-          <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true" *ngIf="!emailName();else elseBlock">
+          <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true" *ngIf="!getLoggedUser();else elseBlock">
             <ul class="nav navbar-nav navbar-center">
 
             <li><a routerLink="/">Home</a></li>
@@ -35,15 +35,15 @@
                 <li><a routerLink="/feed">Home</a></li>
                 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="/courses" id="navbarDropdownMenuLink" >
+                  <a class="nav-link dropdown-toggle" routerLink="courses" id="navbarDropdownMenuLink" >
                     Courses
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <div>
-                    <a class="nav-link dropdown-item" routerLink = "/my-courses">My Courses</a>
+                    <a class="nav-link dropdown-item" routerLink = "courses/followed-courses">My Courses</a>
                   </div>
                   <div>
-                    <a class="dropdown-item" routerLink = "/courses">Follow Courses</a>
+                    <a class="dropdown-item" routerLink = "courses/search">Follow Courses</a>
                   </div>
                   </div>
                 </li>
@@ -57,9 +57,11 @@
             </ul>
           </div>
           <ul class="nav navbar-nav navbar-right" >
-            <li  class="user"><p>HI, {{headerEmail}}</p> </li>
+            <li  class="user"><p>HI, {{user.email}}</p> </li>
+            <li  class="user"><img class = "users-img" [src] ="user.imageUrl" /> </li>
+            <li><a routerLink ='/updeate-users-details' >Settings</a></li>
             <li><a (click)="logOut()" href="#" >Log Out</a></li>
-           
+            
           
           </ul>
         </ng-template>

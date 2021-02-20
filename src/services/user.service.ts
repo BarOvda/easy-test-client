@@ -9,78 +9,91 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class UserService {
-  user:User;
+  user: User;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient,private cookieServise: CookieService) {
+  constructor(private http: HttpClient, private cookieServise: CookieService) {
     //cookieServise.delete("user");
-   // cookieServise.delete("token");
-   if(cookieServise.check("user")){
+    // cookieServise.delete("token");
+    if (cookieServise.check("user")) {
       this.user = JSON.parse(cookieServise.get("user"));
     }
-   }
+  }
 
-   public signUp(data): Promise<any> {
-   // console.log(data.getAll('name'));
-    
-    return this.http.put<any>(`${environment.apiUrl}/users/sign-up`,data)
-    .toPromise()
-    .then(json=>{
-      
-      this.user = json["user"];
-      this.cookieServise.set("user",JSON.stringify(json.user));
-      this.cookieServise.set("token",json.token);
-    });
+  public signUp(data): Promise<any> {
+    // console.log(data.getAll('name'));
+
+    return this.http.put<any>(`${environment.apiUrl}/users/sign-up`, data)
+      .toPromise()
+      .then(json => {
+
+        this.user = json["user"];
+        this.cookieServise.set("user", JSON.stringify(json.user));
+        this.cookieServise.set("token", json.token);
+      });
+  }
+  public updateUsersDetailes(data): Promise<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const options = { headers: headers };
+
+    return this.http.put<any>(`${environment.apiUrl}/users/update-details`, data,options)
+      .toPromise()
+      .then(json => {
+
+        this.user = json["user"];
+        this.cookieServise.set("user", JSON.stringify(json.user));
+      });
   }
 
 
-  public login(email: string,password:string): Promise<any> {
-    return this.http.post<any>(`${environment.apiUrl}/users/login`,{email:email,password:password})
-    .toPromise()
-    .then(json=>{
-      
+  public login(email: string, password: string): Promise<any> {
+    return this.http.post<any>(`${environment.apiUrl}/users/login`, { email: email, password: password })
+      .toPromise()
+      .then(json => {
 
-      this.user = json["user"];
-      this.cookieServise.set("user",JSON.stringify(json.user));
-      this.cookieServise.set("token",json.token);
-    });
+
+        this.user = json["user"];
+        this.cookieServise.set("user", JSON.stringify(json.user));
+        this.cookieServise.set("token", json.token);
+      });
   }
 
-  public logOut(){
+  public logOut() {
     this.cookieServise.delete("user");
     this.cookieServise.delete("token");
   }
   public followCourse(courseId: string): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
-    const options = { headers: headers};
+    const options = { headers: headers };
     return this.http.put<any>(`${environment.apiUrl}/users/follow-course/${courseId}`
-    ,null,options
-    )       
-    .toPromise()
-    .then(json=>{
-    });
+      , null, options
+    )
+      .toPromise()
+      .then(json => {
+      });
   }
   public unFollowCourse(courseId: string): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
-    const options = { headers: headers};
+    const options = { headers: headers };
     return this.http.put<any>(`${environment.apiUrl}/users/unfollow-course/${courseId}`
-    ,null,options
-    )       
-    .toPromise()
-    .then(json=>{
-    });
+      , null, options
+    )
+      .toPromise()
+      .then(json => {
+      });
   }
   // GET /users/directories
-//router.get('/directories/:userId',isAuth, usersController.getUserDirectories);
-public async getUserExamDirectories(): Promise<any> {
-  let headers = new HttpHeaders();
+  //router.get('/directories/:userId',isAuth, usersController.getUserDirectories);
+  public async getUserExamDirectories(): Promise<any> {
+    let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
-    const options = { headers: headers};
-    return this.http.get<any>(`${environment.apiUrl}/users/directories/${this.user._id}`,options).toPromise();
-}
-  
+    const options = { headers: headers };
+    return this.http.get<any>(`${environment.apiUrl}/users/directories/${this.user._id}`, options).toPromise();
+  }
+
 }

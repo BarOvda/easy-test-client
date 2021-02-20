@@ -4,6 +4,7 @@ import { Course } from '../models/course';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { data } from 'jquery';
 
 
 @Injectable({
@@ -35,6 +36,7 @@ export class CourseService {
     const result = 
      await this.http.get<any>(`${environment.apiUrl}/courses/all-appearances/${courseId}`)
     .toPromise();
+    console.log(result);
      return result;
   }
   public async getUnFollowedCourses(page:string,perPage:string): Promise<any> {

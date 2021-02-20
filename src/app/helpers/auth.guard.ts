@@ -9,20 +9,20 @@ export class AuthGuard implements CanActivate {
     constructor(
         private router: Router,
         private cookieServise: CookieService,
-        private userService: UserService
     ) {}
         
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         console.log('scope is ' );
         const token = this.cookieServise.get("token");
-         
+        // this.cookieServise.delete("token");
         if (token) {
             return true;
         }
 
         // not logged in so redirect to login page with the return url
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+        this.router.navigate(['/land-page']);
+        //, { queryParams: { returnUrl: state.url }}
         return false;
     }
 }

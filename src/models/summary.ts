@@ -9,4 +9,5 @@ export class Summary{
       courseAppearance:Course;//TODO change to CourseApp
       usersRank:[{user:User,rank:number}];  
       rank:number;
+      _id:string;
 }

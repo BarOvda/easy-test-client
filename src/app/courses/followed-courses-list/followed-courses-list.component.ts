@@ -22,6 +22,7 @@ export class FollowedCoursesListComponent implements OnInit {
   constructor(private courseService: CourseService,private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log("follow");
     this.reloadData(this.page);
   }
 
