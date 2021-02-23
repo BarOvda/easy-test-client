@@ -1,0 +1,15 @@
+<div class="filesdisplay">
+
+    <app-directory-item *ngFor="let summary of summaries" [summary]="summary"></app-directory-item>
+</div>
+
+<div class="input-file" (click)="getFile()">
+
+
+    <a type="file" class="float">
+        <i class="fa fa-plus my-float"></i>
+    </a>
+    <input type="file" id="upfile" name="summary" (change)="onFileChange($event)" />
+
+
+</div>

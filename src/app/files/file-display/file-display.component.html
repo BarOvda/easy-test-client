@@ -1,11 +1,12 @@
+
 <div class="form-group">
 
 <div class="file-header">
   <ngb-rating class="rating" [formControl]="ctrl"  [(rate)]="rating"  ></ngb-rating>
-  <div class="form-text small">
+  
     <div *ngIf="ctrl.value!=-1" class="text-success">Thanks!</div>
     <div *ngIf="ctrl.value==-1" class="text-danger">Please rate us</div>
-  </div>
+  
 </div>
 </div>
   <div class="iframe">

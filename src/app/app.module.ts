@@ -42,6 +42,9 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { CoursesComponent } from './courses/courses.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
 import { FilesComponent } from './files/files.component';
+import { DirectoryItemComponent } from './exam-directory/directory-item/directory-item.component';
+import { DirectoryContantComponent } from './exam-directory/directory-contant/directory-contant.component';
+import { DragDropDirective } from './drag-drop.directive';
 
 
 
@@ -75,7 +78,10 @@ import { FilesComponent } from './files/files.component';
     ExamDirectoryComponent,
     UpdateUserComponent,
     CoursesComponent,
-    FilesComponent
+    FilesComponent,
+    DirectoryItemComponent,
+    DirectoryContantComponent,
+    DragDropDirective
   ],
   imports: [
     BrowserModule,

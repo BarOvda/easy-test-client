@@ -50,8 +50,6 @@ export class FileDisplayComponent implements OnInit {
     console.log(this.summary);
     this.rating = -1;
 
-    console.log(this.url);
-
 
     this.ctrl.valueChanges.subscribe(rate => {
       console.log(rate);

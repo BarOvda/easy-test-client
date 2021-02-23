@@ -1,39 +1,67 @@
+<form (ngSubmit)="onSubmit()" id="file-upload-form">
+  <div id="login-box">
+    <div class="left">
+      <h1>Sign up</h1>
+
+      <input type="text" placeholder="Username" [(ngModel)]="user.name" name="name" required>
 
 
-    <form (ngSubmit)="onSubmit()" >
-      <div id="login-box">
-        <div class="left">
-          <h1>Sign up</h1> 
-          
-          <input type="text" placeholder="Username" [(ngModel)]="user.name" name="name" required>
-    
-    
-          <input type="text" placeholder="Email" [(ngModel)]="user.email" name="email" required>
-          
-          
-    
-          <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
-    
-          <input type="password" name="password2" placeholder="Retype password" />
-          
-          <label for="image"><b>Profile picture</b></label>
-          <input type="file" class="file-upload" name="image" (change)="onFileChange($event)" />
-          
-          <button type="submit" class="social-signin">Submit</button>
+      <input type="text" placeholder="Email" [(ngModel)]="user.email" name="email" required>
 
-        </div>
-        
-        <div class="right social">
-          <span class="loginwith">Sign in with<br />social network</span>
-          
-          <button class="social-signin facebook">Log in with facebook</button>
-          <button class="social-signin twitter">Log in with Twitter</button>
-          <button class="social-signin google">Log in with Google+</button>
-        </div>
-      </div>
-    </form>
+
+
+      <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+
+      <input type="password" name="password2" placeholder="Retype password" />
+
+      <!-- <label for="image"><b>Profile picture</b></label> -->
+
+
+
+
+      <!-- <input type="file" class="file-upload" name="image" (change)="onFileChange($event)" /> -->
+   
+      <button type="submit" class="social-signin">Submit</button>
+
+
+
   
 
+    </div>
 
 
+    <div class="middle">
+      <div class="uploader">
 
+        <input id="file-upload" type="file" name="image" (change)="onFileChange($event)" accept="image/*" />
+
+        <label for="file-upload" id="file-drag">
+          <img id="file-image" src="#" alt="Preview" class="hidden">
+          <div id="start">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <div>Select a file or drag here</div>
+            <div id="notimage" class="hidden">Please select an image</div>
+            <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+          </div>
+          <div id="response" class="hidden">
+            <div id="messages"></div>
+            <progress class="progress" id="file-progress" value="0">
+              <span>0</span>%
+            </progress>
+          </div>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="right social">
+      <span class="loginwith">Sign in with<br />social network</span>
+
+      <button class="social-signin facebook">Log in with facebook</button>
+      <button class="social-signin twitter">Log in with Twitter</button>
+      <button class="social-signin google">Log in with Google+</button>
+    </div>
+  </div>
+
+
+</form>

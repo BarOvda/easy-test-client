@@ -3,6 +3,7 @@ import { ExamDirectoryService } from 'src/services/exam-directory.service'
 import { Summary } from 'src/models/summary';
 import { UserService } from 'src/services/user.service'
 import { ExamDirectory } from 'src/models/examDirectory';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-exam-directory',
   templateUrl: './exam-directory.component.html',
@@ -15,7 +16,8 @@ export class ExamDirectoryComponent implements OnInit {
   summaries:Summary[];
   directoryId:string;
   
-  constructor(private examDirectoryService: ExamDirectoryService ,private userService:UserService) { }
+
+  constructor(private examDirectoryService: ExamDirectoryService ,private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
     this.summaries = [];
@@ -25,6 +27,7 @@ export class ExamDirectoryComponent implements OnInit {
   getExamDirectories(){
     this.userService.getUserExamDirectories().then((json)=> {
       console.log(json);
+      this.examDirectories = json.exam_direcoties;
     })
    
     }
@@ -33,8 +36,9 @@ export class ExamDirectoryComponent implements OnInit {
         this.summaries=json.data.summaries;
       })
     }
-    uploadToExamDirectory(data){
-      
+    openDirectory(directoryId:string){
+      this.router.navigate(['/directory',directoryId]);
+
     }
   
 }

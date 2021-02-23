@@ -9,11 +9,15 @@
               <tr>
                 <th>Course Id</th>
                 <th></th>
+
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let ExamDirectory of examDirectories">
-                <td>{{ExamDirectory.courseId}}</td>
+              <tr *ngFor="let directory of examDirectories">
+                <td>{{directory.courseId}}</td>
+                <td>
+                  <button id="btn-{{directory._id}}" (click)="openDirectory(directory._id)" class="btn btn-success" style="margin-left: 10px">Directory</button>
+              </td>
               </tr>
             </tbody>
             

@@ -16,6 +16,8 @@ import { AuthGuard } from './helpers/auth.guard';
 import { CoursesComponent } from './courses/courses.component';
 import { FilesComponent } from './files/files.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
+import { DirectoryItemComponent } from './exam-directory/directory-item/directory-item.component';
+import { DirectoryContantComponent } from './exam-directory/directory-contant/directory-contant.component';
 
 const appRoutes: Routes = [
 
@@ -48,7 +50,9 @@ const appRoutes: Routes = [
     { path: 'sign-up', component: SignUpComponent },
     { path: 'updeate-users-details', component: UpdateUserComponent },
     { path: 'upload-file', component: FileUploadComponent },
-    { path: 'exam-directory', component: ExamDirectoryComponent },
+    { path: 'directory', component: ExamDirectoryComponent },
+    { path: 'directory/:id', component: DirectoryContantComponent },
+
     { path: '**', redirectTo: 'home' }
 
 ];

@@ -1,6 +1,6 @@
 export class ExamDirectory{
     _id:string;
-    summaries:string;
+    summaries:string[];
     owner:string;
     courseId:string;
     uploadDate:Date;
