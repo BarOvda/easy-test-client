@@ -30,13 +30,14 @@ export class SearchCoursesComponent implements OnInit {
     this.reloadData(1);
   }
   async onSearchCourse() {
-    const searchResults = this.courseService
+    //const searchResults = this.courseService
   }
   reloadData(page:number) {
     this.courses = [];
 
     this.courseService.getUnFollowedCourses(this.page.toString(),this.itemsPerPage.toString()).then((json) => {
       this.courses = json.courses;
+
       console.log(json.courses);
       this.page = +json.current_page;
       this.totalItems = +json.total_items;

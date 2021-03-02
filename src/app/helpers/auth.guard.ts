@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         console.log('scope is ' );
+        
         const token = this.cookieServise.get("token");
         // this.cookieServise.delete("token");
         if (token) {
@@ -21,7 +22,7 @@ export class AuthGuard implements CanActivate {
         }
 
         // not logged in so redirect to login page with the return url
-        this.router.navigate(['/land-page']);
+        this.router.navigate(['/login']);
         //, { queryParams: { returnUrl: state.url }}
         return false;
     }
