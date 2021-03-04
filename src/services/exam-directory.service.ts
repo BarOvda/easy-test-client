@@ -30,19 +30,31 @@ export class ExamDirectoryService {
       });
   }
 
-  public async addFileToExamDirectory(data, directoryId: string, summaryId: string): Promise<any> {
+  public async addFileToExamDirectory(directoryId: string, summaryId: string): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
     const options = { headers: headers };
-    //// PUT  /exam-directories/upload-summary/{directoryId}/{summaryId}
-    //router.put('/upload-summary/:directoryId/:summaryId',isAuth, examDirectoriesController.addFileToDirectory);//TESTED
-    return this.http.put<any>(`${environment.apiUrl}/upload-summary/${directoryId}/${summaryId}`
-      , data, options)
+
+    return this.http.put<any>(`${environment.apiUrl}/exam-directories/add-summary/${directoryId}/${summaryId}`
+      , null, options)
       .toPromise()
-      .then(json => {
-        console.log(json);
-      });
+
   }
+
+
+  public async removeFileFromExamDirectory(directoryId: string, summaryId: string): Promise<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    const options = { headers: headers };
+
+    return this.http.put<any>(`${environment.apiUrl}/exam-directories/remove-summary/${directoryId}/${summaryId}`
+      , null, options)
+      .toPromise()
+
+  }
+
+  
+
 
   public getExamDirectory(directoryId: string): Promise<any> {
     let headers = new HttpHeaders();
@@ -58,18 +70,18 @@ export class ExamDirectoryService {
 
 
 
-  public uploadFileToDirectory(directoryId: string,file): Promise<any> {
-    
+  public uploadFileToDirectory(directoryId: string, file): Promise<any> {
+
     let formData = new FormData();
     formData.append('file', file);
 
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
     const options = { headers: headers };
-    
-    return this.http.put<any>(`${environment.apiUrl}/summaries/upload/directory/${directoryId}`,formData, options)
+
+    return this.http.put<any>(`${environment.apiUrl}/summaries/upload/directory/${directoryId}`, formData, options)
       .toPromise()
-    
+
   }
 
 

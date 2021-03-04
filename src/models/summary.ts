@@ -1,4 +1,5 @@
 import { Course } from "./course";
+import { CourseAppearance } from "./courseAppearance";
 import { User } from "./user";
 
 export class Summary {
@@ -6,7 +7,7 @@ export class Summary {
   uploadDate: Date;
   pathUrl: string;
   owner: User;
-  courseAppearance: Course;//TODO change to CourseApp
+  courseAppearance: string;//TODO change to CourseApp
   usersRank: [{ user: User, rank: number }];
   rank: number;
   _id: string;

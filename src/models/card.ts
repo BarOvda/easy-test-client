@@ -1,11 +1,11 @@
 export class Card{
-    buttons:[string];
+    buttons:string[];
     content: string;
-    icons: [string];
+    icons: string[];
     imageUrl: string;
     subtitle: string;
     title: string;
-    constructor(buttons:[string], content: string,icons:[string],imageUrl: string,subtitle: string,
+    constructor(buttons:string[], content: string,icons:string[],imageUrl: string,subtitle: string,
         title: string){
             this.buttons=buttons;
             this.content=content;

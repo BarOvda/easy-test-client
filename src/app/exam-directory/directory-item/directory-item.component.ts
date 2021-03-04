@@ -5,6 +5,9 @@ import * as AOS from 'aos';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileService } from 'src/services/file.service';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ExamDirectoryService } from 'src/services/exam-directory.service';
+import { ExamDirectory } from 'src/models/examDirectory';
 
 @Component({
   selector: 'app-directory-item',
@@ -13,13 +16,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DirectoryItemComponent implements OnInit {
   @Input() summary: Summary;
+  @Input() directory: ExamDirectory;
+  
   card: Card;
   currentRate: number;
   url: string;
   private fileId: string;
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private fileService: FileService) { }
+  constructor(private http: HttpClient,
+    private directoryService: ExamDirectoryService,
+    private _snackBar: MatSnackBar
+    , private router: Router
+    , private route: ActivatedRoute, private fileService: FileService) { }
 
   ngOnInit(): void {
+    console.log(this.directory);
     console.log(this.summary);
     this.url = this.summary.pathUrl;
 
@@ -43,6 +53,17 @@ export class DirectoryItemComponent implements OnInit {
   }
   showFile() {
     this.fileService.currentFileDisplied = this.summary;
-    this.router.navigate(['/file',this.summary._id]);
+    this.router.navigate(['/file', this.summary._id]);
+  }
+  removeFromDirectory() {
+    const directoryId = this.summary
+    this.directoryService.removeFileFromExamDirectory(this.directory._id, this.summary._id)
+      .then(json => {
+        this._snackBar.open("The File Deleted Successfuly!",
+          "close", {
+          duration: 2000
+        });
+      })
+
   }
 }

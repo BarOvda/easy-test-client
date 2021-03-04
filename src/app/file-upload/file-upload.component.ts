@@ -68,15 +68,20 @@ uploadResponse = { status: '', message: '', filePath: '' };
  } 
 
  files: any = [];
-
+ filesArray: any = [];
   uploadFile(event) {
+    console.log(event);
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element.name)
+      this.filesArray.push(element)
+      console.log(this.files);
     }  
   }
   deleteAttachment(index) {
     this.files.splice(index, 1)
+    this.filesArray.splice(index,1)
+
   }
 
 
@@ -105,13 +110,16 @@ getTitle(bookId: string) {
 onFileChange(event) {
   if (event.target.files.length > 0) {
     const file = event.target.files[0];
+    console.log(file);
     this.form.get('summary').setValue(file);
   }
 }
 
 onSubmit() {
   const formData = new FormData();
-  formData.append('file', this.form.get('summary').value);
+
+  //formData.append('file', this.form.get('summary').value);
+  formData.append('file', this.filesArray[0]);
  // this.examDirectoryService.uploadFileToExamDirectory(formData,)
   this.fileService.uploadFile(formData,this.selectedCourseAppId).then(res=>{
     // this.uploadResponse = res;

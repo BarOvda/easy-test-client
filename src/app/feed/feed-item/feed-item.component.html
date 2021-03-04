@@ -25,13 +25,15 @@
             <p>{{ card.content }}</p>
         </igx-card-content>
 
-        <igx-card-actions>
+        <igx-card-actions class="actions">
             <button igxButton igxRipple *ngFor="let button of card.buttons">{{ button }}</button>
             <button igxButton="icon"
-                igxRipple
-                igxRippleCentered="true"
+            *ngFor="let icon of card.icons"
+                class="fav-btn"
+                (click)="addToDirectory()"
                 >
-                <igx-icon>favorite</igx-icon>
+
+                <igx-icon>{{icon}}</igx-icon>
             </button>
         </igx-card-actions>
         <ngb-rating [(rate)]="currentRate" readonly="true"  max="5" class="rating"></ngb-rating>

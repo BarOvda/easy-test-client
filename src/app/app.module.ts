@@ -45,7 +45,7 @@ import { FilesComponent } from './files/files.component';
 import { DirectoryItemComponent } from './exam-directory/directory-item/directory-item.component';
 import { DirectoryContantComponent } from './exam-directory/directory-contant/directory-contant.component';
 import { DragDropDirective } from './drag-drop.directive';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -103,7 +103,9 @@ import { DragDropDirective } from './drag-drop.directive';
 	IgxRippleModule,
   MatAutocompleteModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatSnackBarModule
+
   
   
   ],

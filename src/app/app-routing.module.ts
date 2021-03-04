@@ -22,7 +22,9 @@ import { DirectoryContantComponent } from './exam-directory/directory-contant/di
 const appRoutes: Routes = [
 
     { path: '', redirectTo: "home",pathMatch: "full" }
-    , { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
+    , { path: 'home', component: HomeComponent
+  //  , canActivate: [AuthGuard] 
+}
     , { path: 'land-page', component: LandPageComponent }
     ,{ path: 'log-in', component: LogInComponent }
     

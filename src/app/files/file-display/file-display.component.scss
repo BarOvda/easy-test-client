@@ -8,7 +8,10 @@
     height: 600px;
     
 }
-
+button{
+  border-style: none;
+  background-color: transparent;
+}
 .rating{
     color: rgba(205, 219, 5, 0.651) !important;
     font-size: 2.25rem;
@@ -18,4 +21,7 @@
   .text-success{
     float:left; display:inline; width: 10%;
 
+  }
+  .material-icons{
+    padding-bottom: 10px;
   }

@@ -6,8 +6,13 @@
   
     <div *ngIf="ctrl.value!=-1" class="text-success">Thanks!</div>
     <div *ngIf="ctrl.value==-1" class="text-danger">Please rate us</div>
-  
+   <button  (click) = "addFileToDirectory()"><mat-icon> attach_file</mat-icon></button> 
+<!-- 
+    <span class="material-icons">
+      drive_folder_upload
+      </span> -->
 </div>
+
 </div>
   <div class="iframe">
         <iframe width="100%" height="100%" [src]="url | safe"></iframe>

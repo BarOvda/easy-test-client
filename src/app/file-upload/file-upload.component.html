@@ -1,5 +1,5 @@
-  <h1>Upload your Summary!</h1>
-<div>
+<div class="upload-box">
+
   <div *ngIf="error">
     {{ error.message }}
   </div>
@@ -9,73 +9,60 @@
   <div *ngIf="uploadResponse.status === 'progress'">
 
 
-    <div role="progressbar" [style.width.%]="uploadResponse.message" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+    <div role="progressbar" [style.width.%]="uploadResponse.message" aria-valuenow="25" aria-valuemin="0"
+      aria-valuemax="100">
       {{uploadResponse.message}}%
     </div>
 
   </div>
   <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>Upload your Summary!</h1>
 
     <mat-form-field class="example-full-width">
       <mat-label>Course</mat-label>
-      
-      <input type="text"
-           
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="autoCourse"
-             name="course"
-            >
-      <mat-autocomplete #autoCourse="matAutocomplete" 
-      [displayWith]="displayFn"
-      (optionSelected)='getCourse($event.option.value)'>
+
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="autoCourse" name="course">
+      <mat-autocomplete #autoCourse="matAutocomplete" [displayWith]="displayFn"
+        (optionSelected)='getCourse($event.option.value)'>
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option.name}}
         </mat-option>
       </mat-autocomplete>
-    
+
     </mat-form-field>
-    
-    <mat-form-field class="example-full-width"  
-  
-    >
+
+    <mat-form-field class="example-full-width">
       <mat-label>Course Appearance</mat-label>
-      <input type="text"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="autoCourseApp"
-             name="courseApp"
-             [readonly]="!showAutocomplete"
-                         >
-      <mat-autocomplete #autoCourseApp="matAutocomplete" 
-      [displayWith]="displayFnApp"
-      (optionSelected)='getCourseApp($event.option.value)'>
-        <mat-option *ngFor="let app of filteredOptionsApp | async" [value]="app" >
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="autoCourseApp" name="courseApp"
+        [readonly]="!showAutocomplete">
+      <mat-autocomplete #autoCourseApp="matAutocomplete" [displayWith]="displayFnApp"
+        (optionSelected)='getCourseApp($event.option.value)'>
+        <mat-option *ngFor="let app of filteredOptionsApp | async" [value]="app">
           {{app.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    
 
-    
-    
+
+
+
     <!-- <input type="file" name="summary"  (change)="onFileChange($event)" /> -->
 
 
     <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
       <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
     </div>
-      <div  class="files-list" *ngFor="let file of files;let i=index">
-        <p>{{ file }}</p>
-        <button class="delete-file" (click)="deleteAttachment(i)">
-          <img src="../../assets/Recycle_Bin_Full.png">
-        </button>
-      </div>
+    <div class="files-list" *ngFor="let file of files;let i=index">
+      <p>{{ file }}</p>
+      <button class="delete-file" (click)="deleteAttachment(i)">
+        <img src="../../assets/Recycle_Bin_Full.png">
+      </button>
+    </div>
 
 
 
-    
-    <button type="submit">Upload</button>
+
+    <button type="submit" class="submit-btn">Upload</button>
 
   </form>
 </div>

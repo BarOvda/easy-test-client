@@ -1,12 +1,12 @@
-.button {
-    margin: 8px;
-    width: 128px;
+.submit-btn{
+  margin-left: 200px;
 }
 
 .example-form {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
+    margin: auto;
   }
   
   .example-full-width {
@@ -29,10 +29,11 @@
   $theme:       #454cad;
   $dark-text:   #5f6982;
   
-  html,body,* { box-sizing: border-box; font-size: 16px;}
-  html,body   { height: 100%; text-align: center;}
-  body        { padding: 2rem; background: #f8f8f8;}
-  
+
+  .upload-box{
+    margin:  auto;
+    
+  }
   h2 {
     font-family: "Roboto", sans-serif;
     font-size: 26px;

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { Summary } from 'src/models/summary';
+import { ExamDirectoryService } from 'src/services/exam-directory.service';
 import { FileService } from 'src/services/file.service';
 
 @Component({
@@ -21,7 +22,9 @@ export class FileDisplayComponent implements OnInit {
   fileId: string;
   private subscription: Subscription;
 
-  constructor(private config: NgbRatingConfig, private router: Router, private route: ActivatedRoute, private fileService: FileService) {
+  constructor(private config: NgbRatingConfig
+    , private router: Router, private route: ActivatedRoute
+    , private fileService: FileService,private directoryService:ExamDirectoryService) {
     this.config.max = 5;
 
     this.subscription = route.parent.params.subscribe(
@@ -66,6 +69,9 @@ export class FileDisplayComponent implements OnInit {
     if (this.rating < 0)
       return false;
     return true;
+  }
+  addFileToDirectory(){
+    //this.directoryService.addFileToExamDirectory()
   }
 
 }

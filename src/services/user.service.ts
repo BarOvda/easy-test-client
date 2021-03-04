@@ -53,9 +53,9 @@ export class UserService {
     return this.http.post<any>(`${environment.apiUrl}/users/login`, { email: email, password: password })
       .toPromise()
       .then(json => {
-
-
+       // console.log(json.user);
         this.user = json["user"];
+        console.log(this.user);
         this.cookieServise.set("user", JSON.stringify(json.user));
         this.cookieServise.set("token", json.token);
       });

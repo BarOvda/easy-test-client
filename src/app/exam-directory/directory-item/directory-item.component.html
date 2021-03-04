@@ -1,9 +1,9 @@
 <div data-aos="zoom-in" class="item">
 
-    <div class="sample-column card-wrapper" (click)="showFile()">
+    <div class="sample-column card-wrapper" >
         <igx-card class="card">
             <igx-card-media class ="image-container" height="300px">
-                <div id="wrap"     (click)="showFile()"
+                <div id="wrap"     
                 >
                 <iframe class="file-preview"
                 id="file-preview"
@@ -16,23 +16,17 @@
     </div>
             </igx-card-media >
     
-            <igx-card-header >
+            <igx-card-header  (click)="showFile()" >
                 <h3 igxCardHeaderTitle>{{ card.title }}</h3>
                 <h5 igxCardHeaderSubtitle>{{ card.subtitle }}</h5>
             </igx-card-header>
     
-            <igx-card-content routerLink = "/file">
+            <igx-card-content  (click)="showFile()">
                 <p>{{ card.content }}</p>
             </igx-card-content>
     
             <igx-card-actions>
-                <button igxButton igxRipple *ngFor="let button of card.buttons">{{ button }}</button>
-                <button igxButton="icon"
-                    igxRipple
-                    igxRippleCentered="true"
-                    >
-                    <igx-icon>favorite</igx-icon>
-                </button>
+                <button igxButton igxRipple (click)="removeFromDirectory()" >delete</button>
             </igx-card-actions>
             <ngb-rating [(rate)]="currentRate" readonly="true"  max="5" class="rating"></ngb-rating>
         </igx-card>
