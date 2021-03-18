@@ -1,20 +1,17 @@
-
 <div class="form-group">
 
-<div class="file-header">
-  <ngb-rating class="rating" [formControl]="ctrl"  [(rate)]="rating"  ></ngb-rating>
-  
-    <div *ngIf="ctrl.value!=-1" class="text-success">Thanks!</div>
-    <div *ngIf="ctrl.value==-1" class="text-danger">Please rate us</div>
-   <button  (click) = "addFileToDirectory()"><mat-icon> attach_file</mat-icon></button> 
-<!-- 
+  <div class="file-header">
+    <button (click)="openDialog()" class="btn btn-success" style="margin-left: 10px">Rate</button>
+    <button (click)="addFileToDirectory()">
+      <mat-icon> attach_file</mat-icon>
+    </button>
+    <!-- 
     <span class="material-icons">
       drive_folder_upload
       </span> -->
-</div>
-
-</div>
-  <div class="iframe">
-        <iframe width="100%" height="100%" [src]="url | safe"></iframe>
   </div>
 
+</div>
+<div class="iframe" *ngIf="url!==undefined">
+  <iframe width="100%" height="100%" [src]="url | safe"></iframe>
+</div>

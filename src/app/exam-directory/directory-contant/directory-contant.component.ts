@@ -12,52 +12,54 @@ import { ExamDirectoryService } from 'src/services/exam-directory.service';
 export class DirectoryContantComponent implements OnInit {
 
   private subscription: Subscription;
-  direcrtoryId:string;
-  summaries:Summary[] ;
-  directory:ExamDirectory;
+  direcrtoryId: string;
+  summaries: Summary[];
+  directory: ExamDirectory;
 
 
-  constructor( private route: ActivatedRoute,private directoryService:ExamDirectoryService
+  constructor(private route: ActivatedRoute, private directoryService: ExamDirectoryService
   ) {
     this.subscription = route.params.subscribe(
       (param: any) => this.direcrtoryId = param['id']
     );
 
-   }
+  }
 
   ngOnInit(): void {
 
 
 
     this.summaries = []
-    this.getDirectory();  
-  
+    this.getDirectory();
+
   }
-  async getDirectory(){
-    try{
-    const json = await this.directoryService.getExamDirectory(this.direcrtoryId);
+  async getDirectory() {
+    try {
+      const json = await this.directoryService.getExamDirectory(this.direcrtoryId);
       this.directory = json.directory;
       this.summaries = json.directory.summaries;
-      console.log(this.summaries );
-    }catch(err){
+      console.log(this.summaries);
+    } catch (err) {
       console.log(err);
     }
   }
-
+  get childRefreshDirectory(){
+    return this.getDirectory.bind(this);
+  }
 
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-    this.directoryService.uploadFileToDirectory(this.direcrtoryId,file).then(json=>{
-       this.getDirectory();
-    })
+      this.directoryService.uploadFileToDirectory(this.direcrtoryId, file).then(json => {
+        this.getDirectory();
+      })
 
 
     }
   }
-   getFile(){
-     console.log("clicked")
+  getFile() {
+    console.log("clicked")
     document.getElementById("upfile").click();
-}
+  }
 
 }

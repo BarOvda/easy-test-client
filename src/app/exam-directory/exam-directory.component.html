@@ -7,16 +7,16 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Course Id</th>
+                <th>Course</th>
                 <th></th>
 
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let directory of examDirectories">
-                <td>{{directory.courseId}}</td>
+                <td>{{directory.courseId.name}}</td>
                 <td>
-                  <button id="btn-{{directory._id}}" (click)="openDirectory(directory._id)" class="btn btn-success" style="margin-left: 10px">Directory</button>
+                  <button id="btn-{{directory._id}}" (click)="openDirectory(directory._id)" class="btn btn-success" style="margin-left: 10px">Open</button>
               </td>
               </tr>
             </tbody>

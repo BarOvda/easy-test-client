@@ -46,6 +46,12 @@ import { DirectoryItemComponent } from './exam-directory/directory-item/director
 import { DirectoryContantComponent } from './exam-directory/directory-contant/directory-contant.component';
 import { DragDropDirective } from './drag-drop.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RateDialogComponent } from './files/file-display/rate-dialog/rate-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCommonModule } from '@angular/material/core';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { FooterComponent } from './footer/footer.component';;
 
 
 
@@ -81,7 +87,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FilesComponent,
     DirectoryItemComponent,
     DirectoryContantComponent,
-    DragDropDirective
+    DragDropDirective,
+    RateDialogComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -105,9 +113,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule
-
+  ,MatDialogModule,
+  MatButtonModule
+  ,MatCommonModule
+  ,MatButtonToggleModule
   
   
+  ],
+  entryComponents: [
+    RateDialogComponent
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

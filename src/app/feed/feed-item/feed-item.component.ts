@@ -2,13 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Summary } from 'src/models/summary';
 import { Card } from "../../../models/card";
 import * as AOS from 'aos';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FileService } from 'src/services/file.service';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { SummaryService } from 'src/services/summary.service';
 import { UserService } from 'src/services/user.service';
-import { ExamDirectory } from 'src/models/examDirectory';
-import { ExamDirectoryService } from 'src/services/exam-directory.service';
-// import * as AWS from 'aws-sdk';
+
 
 @Component({
   selector: 'app-feed-item',
@@ -20,17 +17,16 @@ export class FeedItemComponent implements OnInit {
   card: Card;
   currentRate: number;
   url: string;
-  icons:string[]=[];
-  private fileId: string;
-  constructor(private http: HttpClient, private router: Router
-    , private route: ActivatedRoute
-    , private fileService: FileService,private userService:UserService,private directoryService:ExamDirectoryService) { }
-  
+  icons: string[] = [];
+
+  constructor(private router: Router
+
+    , private fileService: SummaryService, private userService: UserService) { }
+
   ngOnInit(): void {
     this.url = this.summary.pathUrl;
-    if(this.userService.user.examsDirectories.filter(directory=> directory.courseId===this.summary.courseAppearance).length!=0){
-      console.log("tr");
-      this.icons.push("favorite");
+    if (this.userService.user.examsDirectories
+      .filter(directory => directory.courseId === this.summary.courseAppearance).length != 0) {
     }
 
     this.currentRate = this.summary.rank;
@@ -52,10 +48,10 @@ export class FeedItemComponent implements OnInit {
   }
   showFile() {
     this.fileService.currentFileDisplied = this.summary;
-    this.router.navigate(['/file',this.summary._id]);
+    this.router.navigate(['/file', this.summary._id]);
   }
-  addToDirectory(){
-          //this.directoryService.addFileToExamDirectory()
+  addToDirectory() {
+    //this.directoryService.addFileToExamDirectory()
 
   }
 

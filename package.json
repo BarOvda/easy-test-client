@@ -36,6 +36,7 @@
     "jquery-ui": "^1.12.1",
     "jszip": "^3.5.0",
     "mat": "^1.0.17",
+    "mat-dialog": "0.0.1",
     "material": "^0.4.3",
     "minireset.css": "~0.0.4",
     "ng-animate-scroll": "^7.1.0",

@@ -42,7 +42,7 @@ button {
   left: 0;
   box-sizing: border-box;
   padding: 40px;
-  width: 300px;
+  width: 30%;
   height: 400px;
 }
 
@@ -106,13 +106,13 @@ input[type="submit"]:active {
 
 .middle {
     position: absolute;
-    top: 0;
-    left: 0;
+    top:50px;
+    left: 25px;
     box-sizing: border-box;
     margin-left: 250px;
     margin-top: 100px;
 
-    width: 300px;
+    width: 20%;
     height: 400px;
 }
 
@@ -123,11 +123,12 @@ input[type="submit"]:active {
   right: 0;
   box-sizing: border-box;
   padding: 40px;
-  width: 320px;
+  width: 40%;
   height: 500px;
   background: url('https://goo.gl/YbktSj');
   background-size: cover;
   background-position: right;
+  text-align: center;
   border-radius: 0 2px 2px 0;
 }
 
@@ -141,7 +142,7 @@ input[type="submit"]:active {
 
 button.social-signin {
   margin-bottom: 20px;
-  width: 220px;
+  width: 80%;
   height: 36px;
   border: none;
   border-radius: 2px;
@@ -154,9 +155,10 @@ button.social-signin {
 }
 
 .social{
-  background-image:url("../../assets/unnamed.jpg");
-  background-size: 150%;
-  background-position: center;
+  background-image:url("../../assets/Login-Background.jpg");
+  background-size: cover;
+  background-position: right;   
+  border-radius: 0 2px 2px 0;  background-position: center;
 }
 button.social-signin:hover,
 button.social-signin:focus {
@@ -242,7 +244,11 @@ button.social-signin.google {
       margin-bottom: .5rem;
     }
   }
-
+#file-deag{
+  margin-top: 50px;
+  position: absolute;
+  top: 50%;
+}
   #file-image {
     display: inline;
     margin: 0 auto .5rem auto;

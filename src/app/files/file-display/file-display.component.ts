@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { Summary } from 'src/models/summary';
 import { ExamDirectoryService } from 'src/services/exam-directory.service';
-import { FileService } from 'src/services/file.service';
+import { SummaryService } from 'src/services/summary.service';
+import { RateDialogComponent } from './rate-dialog/rate-dialog.component';
 
 @Component({
   selector: 'app-file-display',
@@ -24,30 +26,25 @@ export class FileDisplayComponent implements OnInit {
 
   constructor(private config: NgbRatingConfig
     , private router: Router, private route: ActivatedRoute
-    , private fileService: FileService,private directoryService:ExamDirectoryService) {
+    , private fileService: SummaryService, private directoryService: ExamDirectoryService,public dialog: MatDialog) {
     this.config.max = 5;
 
     this.subscription = route.parent.params.subscribe(
       (param: any) => this.fileId = param['id']
     );
-  }
-
-  ngOnInit(): void {
-    // this.fileId = this.route.snapshot.params['id'];
-    // this.route.parent.params.subscribe(params => {
-    //   this.fileId = params['id'];
-    //   console.log( params['id']);
-
-    // })
-    console.log(this.fileId);
     this.fileService.getFilesFullDetailes(this.fileId).then(json => {
-      console.log("re");
       console.log(json);
       this.summary = json.summary;
-
+      
 
       this.url = this.summary.pathUrl;
     });
+  }
+
+  ngOnInit(): void {
+
+    console.log(this.fileId);
+
 
     this.ctrl.setValue(-1);
     console.log(this.summary);
@@ -70,8 +67,32 @@ export class FileDisplayComponent implements OnInit {
       return false;
     return true;
   }
-  addFileToDirectory(){
+  addFileToDirectory() {
     //this.directoryService.addFileToExamDirectory()
   }
+  openDialog(){
+    console.log("open dialog");
+    const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(RateDialogComponent, 
+      //dialogConfig
+      {
+      width: '300px',
+      height:'250px',
+      data: {fileId: this.fileId}
+      
+      });
+    dialogRef.afterClosed().subscribe(rate => {
+    console.log(rate);
+
+    if (this.rating != -1) {
+      this.config.readonly = true;
+      this.fileService.rateFile(this.rating.toString(), this.fileId);
+    }
+  });
+}
 
 }

@@ -1,3 +1,4 @@
+import { Course } from "./course";
 import { ExamDirectory } from "./examDirectory";
 
 export class User {
@@ -7,7 +8,7 @@ export class User {
     uploadedSummaries: [string];
     examsDirectories:  [ExamDirectory];
     imageUrl: string;
-    followedCourses:[string];
+    followedCourses:Course[];
     name: string;
     _id:string;
 }

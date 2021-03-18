@@ -1,0 +1,16 @@
+
+
+  <h2 mat-dialog-title>Rank</h2>
+  <mat-dialog-content class="mat-typography rate-dialog">
+  <div class="rate">
+    <ngb-rating class="rating" [formControl]="ctrl" [(rate)]="rating"></ngb-rating>
+  </div>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="actions">
+  <button mat-button mat-dialog-close class="mat-raised-button">Close</button>
+  <button class="mat-raised-button mat-primary" mat-button (click)="newRate()">Rate</button>
+
+</mat-dialog-actions>

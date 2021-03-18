@@ -9,21 +9,29 @@ export class AuthGuard implements CanActivate {
     constructor(
         private router: Router,
         private cookieServise: CookieService,
-    ) {}
-        
-    
+    ) { }
+
+
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        console.log('scope is ' );
-        
+
         const token = this.cookieServise.get("token");
         // this.cookieServise.delete("token");
         if (token) {
-            return true;
-        }
+            console.log('scope is ');
 
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/login']);
-        //, { queryParams: { returnUrl: state.url }}
+            return true;
+
+        }
+        console.log(route.url[route.url.length - 1].path);
+
+        console.log('NAVTO');
+
+
+        if (route.url[route.url.length - 1].path === 'home')
+            this.router.navigate(['/land-page']);
+        else {
+            this.router.navigate(['/log-in']);
+        }
         return false;
     }
 }

@@ -24,10 +24,9 @@ export class HeaderComponent implements OnInit {
   constructor(private service: UserService, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    //this.getLoggedUser();
   }
-  getLoggedUser(){
-    
+  getLoggedUser() {
+
     const isAuth = this.cookieService.check("user");
     if (isAuth) {
       this.user = this.service.user;
@@ -35,22 +34,17 @@ export class HeaderComponent implements OnInit {
     } else {
       return false;
     }
-  } 
+  }
   sendMessage() {
     this.messageEvent.emit("sec")
   }
 
-  onSearchFile() {
-    this.router.navigate(['/search-page/'], { queryParams: { searchUsername: this.fileSearch } }).then(() => {
-      this.fileSearch = '';
-    });
-  }
   logOut() {
     console.log("Log Out");
     this.cookieService.delete("user");
     this.cookieService.delete("token");
     this.router.navigate(['/']);
   }
-  
+
 
 }

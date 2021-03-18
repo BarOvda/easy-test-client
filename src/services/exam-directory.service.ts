@@ -74,11 +74,12 @@ export class ExamDirectoryService {
 
     let formData = new FormData();
     formData.append('file', file);
+    formData.append('isPrivate','true');
 
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
     const options = { headers: headers };
-
+    
     return this.http.put<any>(`${environment.apiUrl}/summaries/upload/directory/${directoryId}`, formData, options)
       .toPromise()
 

@@ -2,13 +2,8 @@
 div.feeddisplay{
     display: grid;
   
-
-  
-  
-  
         justify-content: center;
         align-items: center;
-  
       
     grid-template-columns: 30% 30% 30% ;
     grid-gap: 10px;
@@ -17,3 +12,52 @@ div.feeddisplay{
   div.gridFeed{
     display: grid;
   }
+
+
+  
+  .search-element {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('https://www.w3schools.com/howto/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+
+  .search-element:focus {
+    width: 80%;
+    border: 2px solid rgb(160, 172, 226);
+  }
+.search-container{
+  width: 35%;
+  margin: auto;
+  padding-left: 150px;
+  margin-top: 50px;
+
+}
+.course-filter-options{
+  margin: auto;
+  margin-top: 10px;
+  width: fit-content;
+}
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+input[type=search] {
+  -webkit-appearance: none;
+}
+.main-title-feed{
+  padding-top: 50px;
+
+  
+  text-align: center;
+}
+.course-filter-button{
+  margin-left: 10px;
+}

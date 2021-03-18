@@ -23,7 +23,7 @@ const appRoutes: Routes = [
 
     { path: '', redirectTo: "home",pathMatch: "full" }
     , { path: 'home', component: HomeComponent
-  //  , canActivate: [AuthGuard] 
+    , canActivate: [AuthGuard] 
 }
     , { path: 'land-page', component: LandPageComponent }
     ,{ path: 'log-in', component: LogInComponent }
@@ -55,7 +55,7 @@ const appRoutes: Routes = [
     { path: 'directory', component: ExamDirectoryComponent },
     { path: 'directory/:id', component: DirectoryContantComponent },
 
-    { path: '**', redirectTo: 'home' }
+    { path: '**', redirectTo: 'land-page' }
 
 ];
 @NgModule({

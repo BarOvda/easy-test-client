@@ -3,7 +3,7 @@ import { Summary } from 'src/models/summary';
 import { Card } from "../../../models/card";
 import * as AOS from 'aos';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FileService } from 'src/services/file.service';
+import { SummaryService } from 'src/services/summary.service';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExamDirectoryService } from 'src/services/exam-directory.service';
@@ -17,7 +17,8 @@ import { ExamDirectory } from 'src/models/examDirectory';
 export class DirectoryItemComponent implements OnInit {
   @Input() summary: Summary;
   @Input() directory: ExamDirectory;
-  
+  @Input() getDirectory: Function;
+
   card: Card;
   currentRate: number;
   url: string;
@@ -26,7 +27,7 @@ export class DirectoryItemComponent implements OnInit {
     private directoryService: ExamDirectoryService,
     private _snackBar: MatSnackBar
     , private router: Router
-    , private route: ActivatedRoute, private fileService: FileService) { }
+    , private route: ActivatedRoute, private fileService: SummaryService) { }
 
   ngOnInit(): void {
     console.log(this.directory);
@@ -59,10 +60,12 @@ export class DirectoryItemComponent implements OnInit {
     const directoryId = this.summary
     this.directoryService.removeFileFromExamDirectory(this.directory._id, this.summary._id)
       .then(json => {
+        
         this._snackBar.open("The File Deleted Successfuly!",
           "close", {
           duration: 2000
         });
+        this.getDirectory();
       })
 
   }

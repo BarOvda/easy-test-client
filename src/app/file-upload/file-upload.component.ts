@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Course } from 'src/models/course';
 import { CourseService } from 'src/services/course.service';
-import { FileService } from 'src/services/file.service';
+import { SummaryService } from 'src/services/summary.service';
 import { UserService } from 'src/services/user.service';
 import { map,startWith } from 'rxjs/operators';
 import { CourseAppearance } from 'src/models/courseAppearance';
@@ -34,7 +34,7 @@ uploadResponse = { status: '', message: '', filePath: '' };
   showAutocomplete: boolean = false;
   selectedCourseAppId: string;
    
- constructor(private router: Router,private fileService:FileService,private formBuilder: FormBuilder,private userService: UserService,private courseService:CourseService, private examDirectoryService:ExamDirectoryService) { } 
+ constructor(private router: Router,private fileService:SummaryService,private formBuilder: FormBuilder,private userService: UserService,private courseService:CourseService, private examDirectoryService:ExamDirectoryService) { } 
 
  ngOnInit(): void { 
 
@@ -120,6 +120,7 @@ onSubmit() {
 
   //formData.append('file', this.form.get('summary').value);
   formData.append('file', this.filesArray[0]);
+  formData.append('isPrivate', 'false');
  // this.examDirectoryService.uploadFileToExamDirectory(formData,)
   this.fileService.uploadFile(formData,this.selectedCourseAppId).then(res=>{
     // this.uploadResponse = res;

@@ -1,6 +1,7 @@
 <div class="filesdisplay">
 
-    <app-directory-item *ngFor="let summary of summaries" [directory]="directory" [summary]="summary"></app-directory-item>
+    <app-directory-item *ngFor="let summary of summaries" [directory]="directory" [summary]="summary"
+        [getDirectory]="childRefreshDirectory"></app-directory-item>
 </div>
 
 <div class="input-file" (click)="getFile()">

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { User } from '../../models/user';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
-import { CookieService } from 'ngx-cookie-service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-log-in',
@@ -11,34 +10,45 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  email: string;
-  password:string;
-  isValidDetails: Boolean;
 
-  constructor(private cookieService:CookieService,private service: UserService, private router: Router) { }
+  serverErr: string;
+  isValid: boolean = true;
+  loginForm = this.fb.group({
+    email: ['', { validators: [Validators.required, Validators.email] }
+
+    ],
+    password: ['', { validators: [Validators.required, Validators.minLength(5)] }],
+  });
+
+
+
+  constructor(private service: UserService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    this.isValidDetails = true;
   }
-  
+
   onSubmitLogIn() {
-    this.isValidDetails = true;
-    
-    this.service.login(this.email,this.password).catch((err: HttpErrorResponse) => {
+    const email = this.loginForm.get('email').value;
+    const password = this.loginForm.get('password').value;
+
+    console.log("yes");
+    this.isValid = true;
+    this.service.login(email, password).catch((err: HttpErrorResponse) => {
       console.log('An error occurred:', err.error);
-      this.isValidDetails = false;
-    }).then(()=>{
-      if(this.isValidDetails)
-        this.gotoUserList();
+      this.serverErr = err.error.message;
+      this.isValid = false;
+    }).then(() => {
+      if (this.isValid)
+        this.gotoHome();
     });
-    
+
+
   }
 
-  gotoUserList() {
-    this.router.navigate(['/feed']);
+  gotoHome() {
+    this.router.navigate(['/home']);
   }
 
-  isValidEmailCheack() { return this.isValidDetails }
 
 
 
