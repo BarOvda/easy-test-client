@@ -1,11 +1,10 @@
 .card-wrapper {
-    max-width: 30%;
-    min-width: 20%;
+    width: fit-content;
     height: 500px;
     align-content: center;
     text-align: center;
-    
-    
+    cursor: pointer;
+    margin: auto;
 }
 /* .actions{
   width: ;
@@ -34,7 +33,6 @@
 }
 
 .card{
-  margin-left: 50%;
     max-width: 400px;
     min-width: 400px;
     height: 500px;

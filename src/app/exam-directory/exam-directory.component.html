@@ -8,6 +8,8 @@
             <thead>
               <tr>
                 <th>Course</th>
+                <th>Exam</th>
+                <th>Remake</th>
                 <th></th>
 
               </tr>
@@ -15,6 +17,8 @@
             <tbody>
               <tr *ngFor="let directory of examDirectories">
                 <td>{{directory.courseId.name}}</td>
+                <td>{{directory.courseId.exams.exam}}</td>
+                <td>{{directory.courseId.exams.remake}}</td>
                 <td>
                   <button id="btn-{{directory._id}}" (click)="openDirectory(directory._id)" class="btn btn-success" style="margin-left: 10px">Open</button>
               </td>

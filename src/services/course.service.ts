@@ -71,7 +71,7 @@ export class CourseService {
   }
   public async searchCourseByKeyWord(keyWord:string): Promise<any> {
     const result =  
-     await this.http.post<any>(`${environment.apiUrl}/courses/search/key-word`,keyWord)
+     await this.http.post<any>(`${environment.apiUrl}/courses/search/key-word`,{keyWord:keyWord})
     .toPromise();
      return result;
 

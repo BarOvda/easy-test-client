@@ -1,8 +1,6 @@
 <div class="upload-box">
 
-  <div *ngIf="error">
-    {{ error.message }}
-  </div>
+  
   <div *ngIf="uploadResponse.status === 'error'">
     {{ uploadResponse.message }}
   </div>
@@ -44,11 +42,6 @@
     </mat-form-field>
 
 
-
-
-    <!-- <input type="file" name="summary"  (change)="onFileChange($event)" /> -->
-
-
     <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
       <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
     </div>
@@ -65,27 +58,10 @@
     <button type="submit" class="submit-btn">Upload</button>
 
   </form>
+  <div *ngIf="error" class="file-err">
+    {{ error }}
+  </div>
 </div>
 
 
 
-
-
-<!-- <input  type="file" accept="image/*"  name="summary" id="file-upload-form" class="uploader" (change)="onFileChange($event)" />
-
-<label for="file-upload" id="file-drag">
-  <img id="file-image" src="#" alt="Preview" class="hidden">
-  <div id="start">
-    <i class="fa fa-download" aria-hidden="true"></i>
-    <div>Select a file or drag here</div>
-    <div id="notimage" class="hidden">Please select an image</div>
-    <span id="file-upload-btn" class="btn btn-primary" >Select a file</span>
-  </div>
-  <div id="response" class="hidden">
-    <div id="messages"></div>
-    <progress class="progress" id="file-progress" value="0">
-      <span>0</span>%
-    </progress>
-  </div>
-</label>
-<button type="submit">Upload</button> -->

@@ -1,4 +1,6 @@
-
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1300px) {
 div.filesdisplay{
     display: grid;
   
@@ -14,6 +16,7 @@ div.filesdisplay{
     grid-gap: 10px;
   
   }
+}
   div.gridFeed{
     display: grid;
   }

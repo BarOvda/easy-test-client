@@ -1,16 +1,21 @@
-.file-header{
+.form-group{
     padding-right: 15px;
     padding-left: 15px;
     height: 15px;
+    margin-bottom: 10px;
     
+}
+.file-header{
+  margin-top: -10px;
 }
 .iframe{
     height: 600px;
+    margin-top: 25px;
     
 }
-button{
+.btn-rate{
   border-style: none;
-  margin-bottom: 50px;
+  margin-top: 5px;
 }
 .rating{
     color: rgba(205, 219, 5, 0.651) !important;
@@ -24,4 +29,20 @@ button{
   }
   .material-icons{
     padding-bottom: 10px;
+  }
+  .btn-dic{
+    margin-top: 2px;
+    position:relative;
+    border-radius: 20px;
+    width:36px;
+    height: 36px;
+    float: right  ;
+
+  }
+  .icn-dic{
+    width: 18px;
+    height: 12px;
+    position:absolute;
+    top:4px; //change the value to set it in center
+    left:4px; //change the value to set it in center
   }

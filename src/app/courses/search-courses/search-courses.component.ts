@@ -30,7 +30,13 @@ export class SearchCoursesComponent implements OnInit {
     this.reloadData(1);
   }
   async onSearchCourse() {
-    //const searchResults = this.courseService
+    const searchResults = this.courseService.searchCourseByKeyWord(this.searchValue).then(json=>{
+      this.courses = json.courses;
+      console.log(json.courses);
+      this.page = +json.current_page;
+      this.totalItems = +json.total_items;
+      this.itemsPerPage = +json.items_per_page;
+    })
   }
   reloadData(page:number) {
     this.courses = [];

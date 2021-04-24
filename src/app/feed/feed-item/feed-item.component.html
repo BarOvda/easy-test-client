@@ -1,4 +1,3 @@
-<div data-aos="zoom-in" class="item">
 
     <div class="sample-column card-wrapper" (click)="showFile()">
         <igx-card class="card">
@@ -14,12 +13,12 @@
                 <h5 igxCardHeaderSubtitle>{{ card.subtitle }}</h5>
             </igx-card-header>
 
-            <igx-card-content routerLink="/file">
+            <igx-card-content>
                 <p>{{ card.content }}</p>
             </igx-card-content>
 
             <igx-card-actions class="actions">
-                <button igxButton igxRipple *ngFor="let button of card.buttons">{{ button }}</button>
+                <!-- <button igxButton igxRipple *ngFor="let button of card.buttons">{{ button }}</button> -->
                 <button igxButton="icon" *ngFor="let icon of card.icons" class="fav-btn">
 
                     <igx-icon>{{icon}}</igx-icon>
@@ -29,4 +28,3 @@
             <ngb-rating *ngIf="summary.rank!=0" [(rate)]="currentRate" readonly="true" max="5" class="rating"></ngb-rating>
         </igx-card>
     </div>
-</div>

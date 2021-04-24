@@ -51,8 +51,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCommonModule } from '@angular/material/core';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { FooterComponent } from './footer/footer.component';;
+import { FooterComponent } from './footer/footer.component';
 
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -123,7 +124,7 @@ import { FooterComponent } from './footer/footer.component';;
   entryComponents: [
     RateDialogComponent
   ],
-  providers: [UserService],
+  providers: [UserService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -5,6 +5,7 @@ export class User {
     type:string;
     email: string;
     password: string;
+    role:string;
     uploadedSummaries: [string];
     examsDirectories:  [ExamDirectory];
     imageUrl: string;

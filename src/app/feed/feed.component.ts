@@ -17,7 +17,6 @@ export class FeedComponent implements OnInit {
   followedCourses: Course[];
   searchedCourseId: string;
   searchedCourseName: string;
-
   constructor(private feedService: FeedService
     , private userService: UserService, private service: SummaryService) { }
 
@@ -43,7 +42,6 @@ export class FeedComponent implements OnInit {
     })
   }
   onValChange(course: Course) {
-    // console.log(course);
 
     if (this.searchedCourseId === course._id) {
       this.resetCourseFilter();
@@ -68,7 +66,11 @@ export class FeedComponent implements OnInit {
 
   }
   inputChange() {
-    if (this.searchKeyWord === ''&&this.searchedCourseId != undefined) {
+    console.log("tess");
+    console.log(this.searchKeyWord)
+    if (this.searchKeyWord === ''&&this.searchedCourseId == undefined) {
+      console.log(this.searchedCourseId)
+
       this.resetCourseFilter();
       this.getFeed();
     }

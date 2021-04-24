@@ -7,7 +7,7 @@ export class Summary {
   uploadDate: Date;
   pathUrl: string;
   owner: User;
-  courseAppearance: string;//TODO change to CourseApp
+  courseAppearance: CourseAppearance;//TODO change to CourseApp
   usersRank: [{ user: User, rank: number }];
   rank: number;
   _id: string;

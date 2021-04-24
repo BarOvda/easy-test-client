@@ -26,7 +26,7 @@ export class FeedItemComponent implements OnInit {
   ngOnInit(): void {
     this.url = this.summary.pathUrl;
     if (this.userService.user.examsDirectories
-      .filter(directory => directory.courseId === this.summary.courseAppearance).length != 0) {
+      .filter(directory => directory.courseId._id === this.summary.courseAppearance._id).length != 0) {
     }
 
     this.currentRate = this.summary.rank;
@@ -48,6 +48,7 @@ export class FeedItemComponent implements OnInit {
   }
   showFile() {
     this.fileService.currentFileDisplied = this.summary;
+    console.log("yesss");
     this.router.navigate(['/file', this.summary._id]);
   }
   addToDirectory() {
