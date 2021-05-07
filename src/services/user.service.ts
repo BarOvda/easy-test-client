@@ -74,6 +74,9 @@ export class UserService {
     )
       .toPromise()
       .then(json => {
+        this.user.followedCourses = json.user.followedCourses;
+        this.cookieServise.set("user", JSON.stringify(this.user));
+
       });
   }
   public unFollowCourse(courseId: string): Promise<any> {
@@ -85,6 +88,9 @@ export class UserService {
     )
       .toPromise()
       .then(json => {
+        this.user.followedCourses = json.user.followedCourses;
+        this.cookieServise.set("user", JSON.stringify(this.user));
+
       });
   }
   // GET /users/directories

@@ -39,10 +39,23 @@ export class FeedItemComponent implements OnInit {
       mirror: true, // whether elements should animate out while scrolling past them
 
     });
+    let user_type;
+    switch (this.summary.owner.type) {
+      case ("ADMIN"):
+        user_type = "Admin "
+        break;
+      case ("LECTURER"):
+        user_type = "Lecturer "
+
+        break;
+      default:
+        user_type = " ";
+        break;
+    }
 
     this.card = new Card(
       ["read more"], "simaster A 2019", this.icons, this.url
-      , this.summary.title,
+      , "Uploaded by " + user_type + this.summary.owner.name,
       this.summary.title
     );
   }

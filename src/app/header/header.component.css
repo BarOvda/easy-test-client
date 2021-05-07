@@ -20,6 +20,7 @@
 
 display: table;
 width: 100%;
+
   }
 .navbar-center{
   display: table-cell;
@@ -31,9 +32,8 @@ display: table-cell;
 }
 .navbar-logo{
 
-  width: 90px;
-  height: 90px;
-  padding-top: 3px;
+  width: 65px;
+  height: 65px;
   display: table-cell;
 }
   .dropdown-item{
@@ -63,6 +63,9 @@ display: table-cell;
     height: 55px;
     border-radius: 50%;
 
+  }
+  #nav-bar-logo{
+    padding-top: 5px;
   }
   .right-non-collapsed-nav{
    float: right;

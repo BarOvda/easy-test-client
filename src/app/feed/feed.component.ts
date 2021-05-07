@@ -66,8 +66,6 @@ export class FeedComponent implements OnInit {
 
   }
   inputChange() {
-    console.log("tess");
-    console.log(this.searchKeyWord)
     if (this.searchKeyWord === ''&&this.searchedCourseId == undefined) {
       console.log(this.searchedCourseId)
 
