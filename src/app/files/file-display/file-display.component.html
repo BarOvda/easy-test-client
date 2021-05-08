@@ -1,14 +1,11 @@
 <div class="form-group">
 
   <div class="file-header">
-    <button  (click)="openDialog()" class="btn btn-success btn-rate" style="margin-left: 10px">Rate</button>
+    <button (click)="openDialog()" class="btn btn-success btn-rate" style="margin-left: 10px">Rate</button>
     <button class="btn-dic" *ngIf="this.isDiractoryButtonVisible" (click)="addFileToDirectory()">
       <mat-icon class="icn-dic"> attach_file</mat-icon>
     </button>
-    <!-- 
-    <span class="material-icons">
-      drive_folder_upload
-      </span> -->
+
   </div>
 
 </div>

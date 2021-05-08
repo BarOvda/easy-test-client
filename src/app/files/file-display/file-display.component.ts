@@ -80,7 +80,8 @@ export class FileDisplayComponent implements OnInit {
   addFileToDirectory() {
     let attachedDic;
     this.userService.user.examsDirectories.forEach(dic => {
-      if (dic.courseId._id === this.summary.courseAppearance._id)
+      let couresID:string = dic.courseId.toString();
+      if (couresID === this.summary.courseAppearance._id)
         attachedDic = dic._id;
     })
     this.directoryService.addFileToExamDirectory(attachedDic, this.summary._id).then(json => {

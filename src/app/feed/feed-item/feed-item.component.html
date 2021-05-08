@@ -2,12 +2,13 @@
     <igx-card class="card">
         <igx-card-media class="image-container" height="300px">
             <div id="wrap">
-                <iframe class="file-preview" id="file-preview" type="text/plain" [src]="url | safe" frameBorder="100"
+                <iframe class="file-preview" id="file-preview" type="text/plain"
+                 [src]="url | safe" frameBorder="100"
                     scrolling="no"></iframe>
             </div>
         </igx-card-media>
 
-        <igx-card-header>
+        <igx-card-header class = "card-titles">
                 <h3 igxCardHeaderTitle>{{ card.title }}</h3>
                 <h5 igxCardHeaderSubtitle>{{ card.subtitle }}</h5>
         </igx-card-header>

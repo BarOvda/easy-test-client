@@ -54,7 +54,7 @@ export class FeedItemComponent implements OnInit {
     }
 
     this.card = new Card(
-      ["read more"], "simaster A 2019", this.icons, this.url
+      ["read more"], this.summary.courseAppearance.name, this.icons, this.url
       , "Uploaded by " + user_type + this.summary.owner.name,
       this.summary.title
     );

@@ -29,11 +29,37 @@
 }
 
 .card{
-  margin-left: 50%;
+
     max-width: 400px;
     min-width: 400px;
     height: 500px;
 }
+
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1200px) {
+  .card{
+    margin-left:15px;
+
+  
+  }
+}
+  /* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 500px) 
+and (max-device-width : 1200px) 
+
+ {
+  .card{
+
+    margin-left: 200px;
+
+  }
+
+}
+
+
 
 .item{
   padding-top: 50px;

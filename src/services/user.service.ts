@@ -55,7 +55,7 @@ export class UserService {
       .then(json => {
        // console.log(json.user);
         this.user = json["user"];
-        console.log(this.user);
+        console.log(json["user"]);
         this.cookieServise.set("user", JSON.stringify(json.user));
         this.cookieServise.set("token", json.token);
       });
