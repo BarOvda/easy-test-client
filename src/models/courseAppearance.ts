@@ -10,5 +10,5 @@ export class CourseAppearance {
     }
     courseId: string;
 
-    students: string;
+    students: [{loggedIn:boolean,student:string,_id:string}];
 }

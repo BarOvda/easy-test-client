@@ -26,7 +26,7 @@ export class FileDisplayComponent implements OnInit {
   summary: Summary;
   fileId: string;
   private subscription: Subscription;
-  isDiractoryButtonVisible: Bool = false;
+  isDiractoryButtonVisible: boolean = false;
 
   constructor(private config: NgbRatingConfig
     , private router: Router, private route: ActivatedRoute,
@@ -39,20 +39,28 @@ export class FileDisplayComponent implements OnInit {
     this.subscription = route.parent.params.subscribe(
       (param: any) => this.fileId = param['id']
     );
-    this.fileService.getFilesFullDetailes(this.fileId).then(json => {
-      console.log(json);
-      this.summary = json.summary;
-      if (this.summary.courseAppearance.students.includes(userService.user._id)) {
-        this.isDiractoryButtonVisible = true;
 
-      }
-
-      this.url = this.summary.pathUrl;
-    });
   }
 
   ngOnInit(): void {
+    this.fileService.getFilesFullDetailes(this.fileId).then(json => {
 
+      this.summary = json.summary;
+      console.log(this.summary)
+
+      this.summary.courseAppearance.students.forEach(element => {
+        console.log(element)
+
+        if (element.student == this.userService.user._id)
+          this.isDiractoryButtonVisible = true;
+      });
+      // if (this.summary.courseAppearance.students.includes(this.userService.user._id)) {
+      //   this.isDiractoryButtonVisible = true;
+
+      // }
+
+      this.url = this.summary.pathUrl;
+    });
     console.log(this.fileId);
 
 
@@ -80,7 +88,7 @@ export class FileDisplayComponent implements OnInit {
   addFileToDirectory() {
     let attachedDic;
     this.userService.user.examsDirectories.forEach(dic => {
-      let couresID:string = dic.courseId.toString();
+      let couresID: string = dic.courseId.toString();
       if (couresID === this.summary.courseAppearance._id)
         attachedDic = dic._id;
     })

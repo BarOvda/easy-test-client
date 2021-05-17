@@ -13,7 +13,7 @@ export class SearchCoursesComponent implements OnInit {
   courses: Course[] = [];
   page: number =1;
   totalItems:number;
-  itemsPerPage:number = 2;
+  itemsPerPage:number = 5;
   searchValue:string;
   name: string;
   followedCourses:boolean[];
