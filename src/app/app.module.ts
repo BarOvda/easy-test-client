@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ExamsComponent } from './exams/exams.component';
-import { ExamDetailComponent } from './exams/exam-detail/exam-detail.component';
-import { ExamListComponent } from './exams/exam-list/exam-list.component';
-import { ExamItemComponent } from './exams/exam-list/exam-item/exam-item.component';
+
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../services/user.service';
@@ -23,15 +21,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { IgxDropDownModule, IgxButtonModule, IgxToggleModule, IgxCardModule, IgxRippleModule, IgxIconModule } from "igniteui-angular";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FeedComponent } from './feed/feed.component';
-import {MatIconModule} from "@angular/material/icon";
-import { ReactiveFormsModule} from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatIconModule } from "@angular/material/icon";
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-import {MatCardModule} from "@angular/material/card";
+import { MatCardModule } from "@angular/material/card";
 import { FollowedCoursesListComponent } from './courses/followed-courses-list/followed-courses-list.component';
 import { FeedItemComponent } from './feed/feed-item/feed-item.component';
 
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LandPageComponent } from './land-page/land-page.component';
 import { NgModule } from '@angular/core';
@@ -50,7 +48,7 @@ import { RateDialogComponent } from './files/file-display/rate-dialog/rate-dialo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCommonModule } from '@angular/material/core';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FooterComponent } from './footer/footer.component';
 
 import { DatePipe } from '@angular/common';
@@ -62,12 +60,9 @@ import { DatePipe } from '@angular/common';
     //ServerComponent,
     //ServersComponent,
     HeaderComponent,
-    ExamsComponent,
-   // ReactiveFormsModule,
-   SafePipe,
-    ExamDetailComponent,
-    ExamListComponent,
-    ExamItemComponent,
+
+    // ReactiveFormsModule,
+    SafePipe,
     LogInComponent,
     //DetailsComponent,
     SearchFilesComponent,
@@ -94,38 +89,38 @@ import { DatePipe } from '@angular/common';
   ],
   imports: [
     BrowserModule,
-    NgbModule ,
+    NgbModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
     IgxDropDownModule,
-	IgxButtonModule,
-  IgxToggleModule,
-  BrowserAnimationsModule,
-  NgxPaginationModule,
-  MatCardModule,
-  MatIconModule,
-  ReactiveFormsModule,
-  IgxButtonModule,
-	IgxIconModule,
-	IgxCardModule,
-	IgxRippleModule,
-  MatAutocompleteModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatSnackBarModule
-  ,MatDialogModule,
-  MatButtonModule
-  ,MatCommonModule
-  ,MatButtonToggleModule
-  
-  
+    IgxButtonModule,
+    IgxToggleModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    MatCardModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    IgxButtonModule,
+    IgxIconModule,
+    IgxCardModule,
+    IgxRippleModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule
+    , MatDialogModule,
+    MatButtonModule
+    , MatCommonModule
+    , MatButtonToggleModule
+
+
   ],
   entryComponents: [
     RateDialogComponent
   ],
-  providers: [UserService,DatePipe],
+  providers: [UserService, DatePipe],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 }

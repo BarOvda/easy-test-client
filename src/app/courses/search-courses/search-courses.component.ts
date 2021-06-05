@@ -11,6 +11,8 @@ import { UserService } from 'src/services/user.service';
 })
 export class SearchCoursesComponent implements OnInit {
   courses: Course[] = [];
+  isSpinner:boolean
+
   page: number =1;
   totalItems:number;
   itemsPerPage:number = 5;
@@ -21,6 +23,7 @@ export class SearchCoursesComponent implements OnInit {
   constructor(private courseService: CourseService,private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.isSpinner = true
     this.reloadData(this.page);
   }
 
@@ -49,6 +52,7 @@ export class SearchCoursesComponent implements OnInit {
       this.totalItems = +json.total_items;
       this.itemsPerPage = +json.items_per_page;
       console.log(this.page);
+      this.isSpinner = false
       // this.courses.forEach(function (course){
       //   document.getElementById("btn-"+course._id).innerHTML = document.getElementById("btn-"+course._id)
       //   .innerHTML == "Disable" ? "Enable" : "Disable";

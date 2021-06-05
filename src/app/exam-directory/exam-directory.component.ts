@@ -11,9 +11,9 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./exam-directory.component.scss']
 })
 export class ExamDirectoryComponent implements OnInit {
+  isSpinner:boolean;
 
-
-  examDirectories: ExamDirectory[];
+  examDirectories: ExamDirectory[] = [];
   summaries: Summary[];
   directoryId: string;
   examDate: string;
@@ -23,6 +23,7 @@ export class ExamDirectoryComponent implements OnInit {
   constructor(public datepipe: DatePipe, private examDirectoryService: ExamDirectoryService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.isSpinner = true
     this.summaries = [];
     this.getExamDirectories();
   }
@@ -34,8 +35,9 @@ export class ExamDirectoryComponent implements OnInit {
       this.examDirectories.forEach(dic => {
        dic.courseId.exams.exam =this.datepipe.transform(dic.courseId.exams.exam, 'yyyy-MM-dd hh:mm');
        dic.courseId.exams.remake =this.datepipe.transform(dic.courseId.exams.remake, 'yyyy-MM-dd hh:mm');
-
       });
+      this.isSpinner = false
+
     })
   }
   getExamDirectory(directoryId: string) {

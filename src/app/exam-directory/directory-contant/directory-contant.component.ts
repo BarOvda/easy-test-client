@@ -10,7 +10,7 @@ import { ExamDirectoryService } from 'src/services/exam-directory.service';
   styleUrls: ['./directory-contant.component.scss']
 })
 export class DirectoryContantComponent implements OnInit {
-
+  isSpinner:boolean
   private subscription: Subscription;
   direcrtoryId: string;
   summaries: Summary[];
@@ -27,7 +27,7 @@ export class DirectoryContantComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.isSpinner = true
 
     this.summaries = []
     this.getDirectory();
@@ -42,6 +42,7 @@ export class DirectoryContantComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
+    this.isSpinner = false
   }
   get childRefreshDirectory(){
     return this.getDirectory.bind(this);

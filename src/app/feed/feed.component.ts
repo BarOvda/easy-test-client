@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/models/course';
 import { Summary } from 'src/models/summary';
@@ -12,66 +13,120 @@ import { UserService } from 'src/services/user.service';
 })
 export class FeedComponent implements OnInit {
   selected: any;
+  isSpinner: boolean
   summaries: Summary[] = [];
-  searchKeyWord: string;
+  searchKeyWord: string = null;
   followedCourses: Course[];
-  searchedCourseId: string;
-  searchedCourseName: string;
+  searchedCourse: Course = null;
+  isEmptyFeed: boolean
   constructor(private feedService: FeedService
     , private userService: UserService, private service: SummaryService) { }
 
 
 
   ngOnInit(): void {
+    this.isSpinner = true;
     this.summaries = [];
-    console.log(this.userService.user);
-    this.followedCourses = this.userService.user.followedCourses;
-    console.log(this.followedCourses);
-    this.getFeed();
-  }
-  getFeed() {
 
-    this.feedService.getFeed().then(json => {
-      this.summaries = json.data;
+    this.followedCourses = this.userService.user.followedCourses;
+    this.getAllFeed();
+
+  }
+
+
+  getAllFeed() {
+    this.isEmptyFeed = false;
+    this.feedService.getFeed().then(() => {
+
+      console.log(this.feedService.all_feed)
+      this.feedService.all_feed.forEach(element => {
+
+        this.summaries.push(element)
+
+      })
+      if (this.summaries.length == 0)
+        this.isEmptyFeed = true
+      this.isSpinner = false
+
+
+
+    }).catch(err => {
+      console.log(err)
+      this.isEmptyFeed = true
+      this.isSpinner = false
+
     });
 
   }
   onSearchSummary() {
-    this.service.searchForAFile(this.searchKeyWord, this.searchedCourseId).then(json => {
-      this.summaries = json.results;
+    this.summaries = []
+    this.feedService.all_feed.forEach(element => {
+      this.summaries.push(element)
     })
-  }
-  onValChange(course: Course) {
 
-    if (this.searchedCourseId === course._id) {
-      this.resetCourseFilter();
-      console.log("reset")
+
+
+    if (this.searchedCourse != null && this.searchedCourse != undefined)
+      this.addCourseFilter(this.searchedCourse)
+    if (this.searchKeyWord == "" || this.searchKeyWord == null || this.searchKeyWord == undefined) {
+
+
+    } else {
+      var to_pull_out = []
+      this.summaries.forEach(sum => {
+        if (!sum.title.includes(this.searchKeyWord)) {
+          to_pull_out.push(sum);
+        }
+
+      })
+      to_pull_out.forEach(pull => {
+        if (this.summaries.includes(pull))
+          this.summaries.splice(this.summaries.indexOf(pull), 1);
+      })
     }
-    else {
-      this.searchedCourseId = course._id;
-      this.searchedCourseName = course.name;
-    }
-    if (this.searchedCourseId === undefined && this.searchKeyWord === undefined) {
-      this.getFeed();
+    if (this.summaries.length == 0)
+      this.isEmptyFeed = true
+  }
+  onValChange(course) {
+    // console.log(course)
+    if (this.searchedCourse == null || this.searchedCourse == undefined) {
+
+      this.addCourseFilter(course);
       return;
     }
-    this.service.searchForAFile(this.searchKeyWord, this.searchedCourseId).then(json => {
-      this.summaries = json.results;
-    })
-  }
-  resetCourseFilter() {
-    this.selected = null;
-    this.searchedCourseName = undefined;
-    this.searchedCourseId = undefined;
-
-  }
-  inputChange() {
-    if (this.searchKeyWord === ''&&this.searchedCourseId == undefined) {
-      console.log(this.searchedCourseId)
+    else if (this.searchedCourse == course) {
 
       this.resetCourseFilter();
-      this.getFeed();
+      return;
+
+    } else {
+      this.addCourseFilter(course);
+
+    }
+    if (this.summaries.length == 0)
+      this.isEmptyFeed = true
+
+
+  }
+  addCourseFilter(course) {
+    this.searchedCourse = course
+    this.summaries = [];
+    // console.log(course)
+    this.feedService.all_feed.forEach(sum => {
+      // console.log(sum)
+      if (sum.courseAppearance.couresId == course)
+        this.summaries.push(sum)
+    })
+
+  }
+  resetCourseFilter() {
+    this.searchedCourse = null;
+    this.summaries = this.feedService.all_feed;
+    if (this.searchKeyWord != null && this.searchKeyWord != undefined) {
+
     }
   }
 
 }
+
+

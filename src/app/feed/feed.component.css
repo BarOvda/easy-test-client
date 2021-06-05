@@ -1,9 +1,11 @@
 
-
+.feed-display{
+  margin-top: 15px;
+}
 /* Large screens ----------- */
 @media only screen 
 and (min-width : 1200px) {
-  div.feeddisplay{
+  div.feed-display{
     display: grid;
   
         justify-content: center;
@@ -20,7 +22,7 @@ and (min-device-width : 500px)
 and (max-device-width : 1200px) 
 
  {
-  div.feeddisplay{
+  div.feed-display{
 
   display: grid;
   
@@ -35,7 +37,9 @@ grid-template-columns: 300px ;
   div.gridFeed{
     display: grid;
   }
-
+.empty-feed{
+  text-align: center;
+}
   .search-element {
     width: 200px;
     min-width: fit-content;

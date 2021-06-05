@@ -1,16 +1,20 @@
-<div class="filesdisplay">
+<div [hidden]="!isSpinner" class="loader" id="spinner" style="margin-left: 45%; margin-top: 100px;"></div>
 
-    <app-directory-item *ngFor="let summary of summaries" [directory]="directory" [summary]="summary"
-        [getDirectory]="childRefreshDirectory"></app-directory-item>
-</div>
+<div [hidden]="isSpinner">
+    <div class="filesdisplay">
 
-<div class="input-file" (click)="getFile()">
+        <app-directory-item *ngFor="let summary of summaries" [directory]="directory" [summary]="summary"
+            [getDirectory]="childRefreshDirectory"></app-directory-item>
+    </div>
 
-
-    <a type="file" class="float">
-        <i class="fa fa-plus my-float"></i>
-    </a>
-    <input type="file" id="upfile" name="summary" (change)="onFileChange($event)" />
+    <div class="input-file" (click)="getFile()">
 
 
+        <a type="file" class="float">
+            <i class="fa fa-plus my-float"></i>
+        </a>
+        <input type="file" id="upfile" name="summary" (change)="onFileChange($event)" />
+
+
+    </div>
 </div>

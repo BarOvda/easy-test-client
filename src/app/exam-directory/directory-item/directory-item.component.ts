@@ -49,7 +49,7 @@ export class DirectoryItemComponent implements OnInit {
     this.card = new Card(
       ["read more"], "simaster A 2019", ["favorite"], this.url
       , this.summary.title,
-      this.summary.title
+      this.summary.title,""
     );
   }
   showFile() {

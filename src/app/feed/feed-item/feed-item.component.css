@@ -21,7 +21,22 @@
     height: 600px;
     overflow: hidden;
  zoom: 3;  }
+.number-of-raters{
 
+  display: grid !important;
+  
+  justify-content: center !important;
+  align-items: center !important;
+
+grid-template-columns: 30% 30% 30% !important;
+grid-gap: 10px;
+}
+.app-name{
+  width:50% ;
+}
+.raters-display{
+  width: 50%;
+}
  #wrap {border: 1px solid rgb(255, 255, 255);  max-width: 100%;; overflow: hidden; }
  #file-preview{  border: 0px none; margin-left: 0px; height: 700px; margin-top: -80px; width: 110%;  overflow: hidden;}
 #file-preview { zoom: 0.75;  }

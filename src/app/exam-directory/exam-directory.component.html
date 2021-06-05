@@ -1,32 +1,39 @@
-<div class="exam-directory">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h2>Exam Directories</h2>
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Course</th>
-                <th>Exam</th>
-                <th>Remake</th>
-                <th></th>
+<div [hidden]="!isSpinner" style="margin-top: 100px;" class="loader" id="spinner"></div>
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let directory of examDirectories">
-                <td>{{directory.courseId.name}}</td>
-                <td>{{directory.courseId.exams.exam}}</td>
-                <td>{{directory.courseId.exams.remake}}</td>
-                <td>
-                  <button id="btn-{{directory._id}}" (click)="openDirectory(directory._id)" class="btn btn-success" style="margin-left: 10px">Open</button>
-              </td>
-              </tr>
-            </tbody>
-            
-          </table>
-        </div>
+<div [hidden]="isSpinner">
+  <div class="exam-directory" [hidden]="examDirectories.length==0">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Exam Directories</h2>
       </div>
-    
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Exam</th>
+              <th>Remake</th>
+              <th></th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let directory of examDirectories">
+              <td>{{directory.courseId.name}}</td>
+              <td>{{directory.courseId.exams.exam}}</td>
+              <td>{{directory.courseId.exams.remake}}</td>
+              <td>
+                <button id="btn-{{directory._id}}" (click)="openDirectory(directory._id)" class="btn btn-success"
+                  style="margin-left: 10px">Open</button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
     </div>
+  </div>
+  <h4 class="empty-feed" [hidden]="examDirectories.length!=0">There Is No Nearby Exams!</h4>
+</div>
+
+

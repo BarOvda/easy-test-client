@@ -1,45 +1,29 @@
-<div class="search-container">
-    <form (ngSubmit)="onSearchSummary()" class="form-inline waves-light" mdbWavesEffect>
-        <input id="search" type="search" class="search-element" [(ngModel)]="this.searchKeyWord"
-            (change)="inputChange()" name="search" placeholder="Search..">
-    </form>
-</div>
-<br>
+<div [hidden]="!isSpinner" class="loader" id="spinner"></div>
 
-<div class="course-filter-options">
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="selected">
-        <mat-button-toggle *ngFor="let courseOption of followedCourses" (click)="onValChange(courseOption)"
-            class="course-filter-button">{{courseOption.name}}</mat-button-toggle>
+<div [hidden]="isSpinner">
 
-    </mat-button-toggle-group>
-</div>
+    <div class="search-container">
+        <form (ngSubmit)="onSearchSummary()" class="form-inline waves-light" mdbWavesEffect>
+            <input id="search" type="search" class="search-element" [(ngModel)]="this.searchKeyWord" name="search"
+                placeholder="Search..">
+        </form>
+    </div>
+    <br>
+    <div [hidden]="summaries.length==0">
+        <div class="course-filter-options">
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value]="searchedCourse">
+                <mat-button-toggle *ngFor="let courseOption of followedCourses" value="{{courseOption._id}}"
+                    (change)="onValChange($event.value)" class="course-filter-button">
+                    {{courseOption.name}}</mat-button-toggle>
 
-<div *ngIf="selected!=null||searchKeyWord!=undefined&&summaries!=[]; else noFilter" class="main-title-feed">
+            </mat-button-toggle-group>
+        </div>
 
-    <div *ngIf="selected!=null;else onlyKey" class="main-title-feed">
-        <div *ngIf="searchKeyWord!=undefined; else onlyFilter" class="main-title-feed">
-            <h3 class="deepshd">{{searchedCourseName}} {{searchKeyWord}} </h3>
+
+
+        <div class="feed-display">
+            <app-feed-item *ngFor="let summary of summaries" [summary]="summary"></app-feed-item>
         </div>
     </div>
-    <ng-template #onlyFilter>
-        <h3 class="deepshd">{{searchedCourseName}} {{searchKeyWord}} </h3>
-    </ng-template>
-    <ng-template #onlyKey>
-        <h3 class="deepshd">{{searchKeyWord}} </h3>
-    </ng-template>
-
-</div>
-<ng-template #noFilter>
-
-    <div *ngIf="summaries==[]" class="main-title-feed">
-        <h3 class="deepshd"> There is no results </h3>
-    </div>
-    <div *ngIf="summaries!=[]" class="main-title-feed">
-        <h3 class="deepshd"> Recomended For You </h3>
-
-    </div>
-</ng-template>
-
-<div class="feeddisplay">
-    <app-feed-item *ngFor="let summary of summaries" [summary]="summary"></app-feed-item>
+    <h4 class="empty-feed" [hidden]="summaries.length!=0">Add Courses To See The Hottest Summaries!</h4>
 </div>

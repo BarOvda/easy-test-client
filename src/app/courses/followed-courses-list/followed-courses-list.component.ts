@@ -10,6 +10,8 @@ import { UserService } from 'src/services/user.service';
   styleUrls: ['./followed-courses-list.component.css']
 })
 export class FollowedCoursesListComponent implements OnInit {
+  isSpinner:boolean
+  
 
   courses: Course[] = [];
   page: number =1;
@@ -22,6 +24,7 @@ export class FollowedCoursesListComponent implements OnInit {
   constructor(private courseService: CourseService,private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.isSpinner = true;
     console.log("follow");
     this.reloadData(this.page);
   }
@@ -43,6 +46,7 @@ export class FollowedCoursesListComponent implements OnInit {
       this.totalItems = +json.total_items;
       this.itemsPerPage = +json.items_per_page;
       console.log(this.totalItems);
+      this.isSpinner = false;
 
     });
  }

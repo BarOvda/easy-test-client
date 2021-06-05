@@ -1,3 +1,4 @@
+import { Course } from "./course";
 
 export class CourseAppearance {
     _id: string;
@@ -8,7 +9,7 @@ export class CourseAppearance {
         duration:Number,
         withMaterials:Boolean
     }
-    courseId: string;
+    couresId: Course;
 
     students: [{loggedIn:boolean,student:string,_id:string}];
 }

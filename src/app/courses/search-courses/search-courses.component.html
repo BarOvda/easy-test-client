@@ -1,4 +1,7 @@
-<body>
+<div [hidden]="!isSpinner" class="loader" id="spinner"></div>
+
+<div [hidden]="isSpinner">
+
   <form (ngSubmit)="onSearchCourse()">
     <div class="container">
       <input type="text" placeholder="Enter Course Name ..." [(ngModel)]="this.searchValue" name="Attribute" required>
@@ -8,32 +11,29 @@
     </div>
   </form>
 
-  
-    <div class="panel-body">
-      <table class="responstable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let course of courses | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems: totalItems}">
-            <td>{{course.name}}</td>
-            <td>
-                <button id="btn-{{course._id}}" (click)="followCourse(course._id)" class="btn btn-success" style="margin-left: 10px">Follow</button>
-            </td>
-          </tr>
-        </tbody>
-        
-      </table>
-    </div>
-    <div class="text-center">
-      <pagination-controls  (pageChange)="handlePageChange($event)"></pagination-controls>
-    </div>
-  
 
+  <div class="panel-body">
+    <table class="responstable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let course of courses | paginate: { itemsPerPage: itemsPerPage, currentPage: page,totalItems: totalItems}">
+          <td>{{course.name}}</td>
+          <td>
+            <button id="btn-{{course._id}}" (click)="followCourse(course._id)" class="btn btn-success"
+              style="margin-left: 10px">Follow</button>
+          </td>
+        </tr>
+      </tbody>
 
-
-
-  
+    </table>
+  </div>
+  <div class="text-center">
+    <pagination-controls (pageChange)="handlePageChange($event)"></pagination-controls>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExamDetailComponent } from './exams/exam-detail/exam-detail.component';
-import { ExamListComponent } from './exams/exam-list/exam-list.component';
+
 import { LogInComponent } from './log-in/log-in.component'
 import { SearchCoursesComponent } from './courses/search-courses/search-courses.component'
 import { SearchFilesComponent } from './search-files/search-files.component'
@@ -16,7 +15,7 @@ import { AuthGuard } from './helpers/auth.guard';
 import { CoursesComponent } from './courses/courses.component';
 import { FilesComponent } from './files/files.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
-import { DirectoryItemComponent } from './exam-directory/directory-item/directory-item.component';
+
 import { DirectoryContantComponent } from './exam-directory/directory-contant/directory-contant.component';
 
 const appRoutes: Routes = [
@@ -46,9 +45,8 @@ const appRoutes: Routes = [
         ]
     },
 
-    { path: 'exams', component: ExamListComponent },
     { path: 'search-page', component: SearchFilesComponent },
-    { path: 'exam-detail', component: ExamDetailComponent },
+    
     { path: 'sign-up', component: SignUpComponent },
     { path: 'updeate-users-details', component: UpdateUserComponent },
     { path: 'upload-file', component: FileUploadComponent },
