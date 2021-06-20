@@ -19,7 +19,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let directory of examDirectories">
-              <td>{{directory.courseId.name}}</td>
+              <td>{{directory.courseId.couresId.name}} {{directory.courseId.name}}</td>
               <td>{{directory.courseId.exams.exam}}</td>
               <td>{{directory.courseId.exams.remake}}</td>
               <td>

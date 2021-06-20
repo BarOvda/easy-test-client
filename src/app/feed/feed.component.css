@@ -60,7 +60,7 @@ grid-template-columns: 300px ;
     width: 300px;
     border: 2px solid rgb(160, 172, 226);
   }
-.search-container{
+.container{
   width: 200px;
   margin: auto;
   margin-top: 50px;

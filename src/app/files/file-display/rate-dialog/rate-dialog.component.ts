@@ -33,17 +33,17 @@ export class RateDialogComponent {
   }
   newRate(): void {
     this.service.rateFile(this.rating.toString(), this.fileId).then(json => {
-      if (json == null) {
-        this._snackBar.open("You Have Already Rated The Summary!",
-          "close", {
-          duration: 2000
-        });
-      } else {
+      // if (json == null) {
+      //   this._snackBar.open("You Have Already Rated The Summary!",
+      //     "close", {
+      //     duration: 2000
+      //   });
+      // } else {
         this._snackBar.open("Thanks For Your Rating!",
           "close", {
           duration: 2000
         });
-      }
+      // }
     }).catch(err => {
       console.log(err)
       this._snackBar.open("There Was An Error with Your Rate!",

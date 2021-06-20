@@ -2,28 +2,39 @@
 
 <div [hidden]="isSpinner">
 
-    <div class="search-container">
-        <form (ngSubmit)="onSearchSummary()" class="form-inline waves-light" mdbWavesEffect>
-            <input id="search" type="search" class="search-element" [(ngModel)]="this.searchKeyWord" name="search"
-                placeholder="Search..">
-        </form>
+
+    <div class="container">
+                <form (ngSubmit)="onSearchSummary()" class="form-inline waves-light" mdbWavesEffect>
+
+                    <input id="search" class="search-element" type="search" name="search"
+                        [(ngModel)]="this.searchKeyWord" autocomplete="off"
+                        placeholder="Start searching for a summary title">
+                </form>
+
     </div>
+
+
+
     <br>
+    <div [hidden]="followedCourses.length==0" class="course-filter-options">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value]="searchedCourse">
+            <mat-button-toggle *ngFor="let courseOption of followedCourses" value="{{courseOption._id}}"
+                (change)="onValChange($event.value)" class="course-filter-button">
+                {{courseOption.name}}</mat-button-toggle>
+
+        </mat-button-toggle-group>
+    </div>
+
+
+
+
     <div [hidden]="summaries.length==0">
-        <div class="course-filter-options">
-            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value]="searchedCourse">
-                <mat-button-toggle *ngFor="let courseOption of followedCourses" value="{{courseOption._id}}"
-                    (change)="onValChange($event.value)" class="course-filter-button">
-                    {{courseOption.name}}</mat-button-toggle>
-
-            </mat-button-toggle-group>
-        </div>
-
-
 
         <div class="feed-display">
             <app-feed-item *ngFor="let summary of summaries" [summary]="summary"></app-feed-item>
         </div>
     </div>
-    <h4 class="empty-feed" [hidden]="summaries.length!=0">Add Courses To See The Hottest Summaries!</h4>
+    <h4 class="empty-feed" [hidden]="followedCourses.length!=0">FOLLOW COURSES TO SEE SUMMERIES</h4>
+
+    <h4 class="empty-feed" [hidden]="summaries.length!=0||followedCourses.length==0">NO RESULTS</h4>
 </div>

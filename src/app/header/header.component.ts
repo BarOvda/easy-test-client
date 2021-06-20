@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
 
     const isAuth = this.cookieService.check("user");
     if (isAuth) {
+      // console.log("---header")
       this.user = this.service.user;
       return true;
     } else {

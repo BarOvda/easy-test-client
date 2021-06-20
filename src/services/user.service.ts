@@ -39,12 +39,13 @@ export class UserService {
     headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
     const options = { headers: headers };
 
-    return this.http.put<any>(`${environment.apiUrl}/users/update-details`, data,options)
+    return this.http.put<any>(`${environment.apiUrl}/users/update-details`, data, options)
       .toPromise()
       .then(json => {
-
-        this.user = json["user"];
-        this.cookieServise.set("user", JSON.stringify(json.user));
+        var temp = json["user"];
+        console.log(temp)
+        this.user.imageUrl = temp["imageUrl"];
+        this.cookieServise.set("user", JSON.stringify(this.user));
       });
   }
 
@@ -53,7 +54,8 @@ export class UserService {
     return this.http.post<any>(`${environment.apiUrl}/users/login`, { email: email, password: password })
       .toPromise()
       .then(json => {
-       // console.log(json.user);
+        console.log(json.user);
+        console.log("login-----");
         this.user = json["user"];
         console.log(json["user"]);
         this.cookieServise.set("user", JSON.stringify(json.user));

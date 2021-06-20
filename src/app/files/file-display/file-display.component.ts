@@ -43,21 +43,23 @@ export class FileDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isDiractoryButtonVisible = false
     this.fileService.getFilesFullDetailes(this.fileId).then(json => {
 
       this.summary = json.summary;
       console.log(this.summary)
+      var courseappId = this.summary.courseAppearance._id;
+      var users_courses_exams = [];
+      console.log(this.userService.user)
 
-      this.summary.courseAppearance.students.forEach(element => {
-        console.log(element)
-
-        if (element.student == this.userService.user._id)
-          this.isDiractoryButtonVisible = true;
-      });
-      // if (this.summary.courseAppearance.students.includes(this.userService.user._id)) {
-      //   this.isDiractoryButtonVisible = true;
-
-      // }
+      this.userService.user.examsDirectories.forEach(dir => {
+        console.log(dir)
+        users_courses_exams.push(dir.courseId.couresId._id);
+      })
+      console.log(this.summary.courseAppearance.couresId._id)
+      if (users_courses_exams.includes(this.summary.courseAppearance.couresId._id)) {
+        this.isDiractoryButtonVisible = true;
+      }
 
       this.url = this.summary.pathUrl;
     });
@@ -86,12 +88,15 @@ export class FileDisplayComponent implements OnInit {
     return true;
   }
   addFileToDirectory() {
-    let attachedDic;
+    var attachedDic;
+    var couresID;
     this.userService.user.examsDirectories.forEach(dic => {
-      let couresID: string = dic.courseId.toString();
-      if (couresID === this.summary.courseAppearance._id)
-        attachedDic = dic._id;
+      couresID = dic.courseId._id;
+      if (this.summary.courseAppearance.couresId._id == dic.courseId.couresId._id) {
+        attachedDic = dic._id
+      }
     })
+
     this.directoryService.addFileToExamDirectory(attachedDic, this.summary._id).then(json => {
 
       this._snackBar.open("The file added succesfuly!",

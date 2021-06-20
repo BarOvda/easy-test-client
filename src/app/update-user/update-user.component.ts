@@ -31,8 +31,8 @@ export class UpdateUserComponent implements OnInit {
     this.isValid = true;
     const formData = new FormData();
     formData.append('image', this.form.get('image').value);
-    formData.append('name', this.user.name);
-    formData.append('password', this.user.password);
+    // formData.append('name', this.user.name);
+    // formData.append('password', this.user.password);
     try{
     const result = await this.service.updateUsersDetailes(formData);
     this.goTOHomePage();

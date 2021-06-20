@@ -29,7 +29,8 @@ export class FeedItemComponent implements OnInit {
       .filter(directory => directory.courseId._id === this.summary.courseAppearance._id).length != 0) {
     }
 
-    this.currentRate = this.summary.rank;
+    this.currentRate = Math.round(this.summary.rank -0.01);
+
     AOS.init({
       offset: 0, // offset (in px) from the original trigger point
       delay: 0, // values from 0 to 3000, with step 50ms
@@ -54,9 +55,9 @@ export class FeedItemComponent implements OnInit {
     }
 
     this.card = new Card(
-      ["read more"], this.summary.courseAppearance.name, this.icons, this.url
+      ["read more"], this.summary.courseAppearance.couresId.name +"\n"+ this.summary.courseAppearance.name, this.icons, this.url
       , "Uploaded by " + user_type + this.summary.owner.name,
-      this.summary.courseAppearance.couresId.name + " Summary", this.summary.usersRank.length +" Rates"
+      this.summary.title , this.summary.usersRank.length + " Rates"
     );
   }
   showFile() {

@@ -12,7 +12,6 @@
 
       <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
 
-      <input type="password" name="password2" placeholder="Retype password" />
 
       <!-- <label for="image"><b>Profile picture</b></label> -->
 
@@ -23,13 +22,15 @@
    
       <button type="submit" class="social-signin">Submit</button>
 
-
+      <div class="server-err">
+        <mat-error *ngIf="!isValid">{{serverErr}}</mat-error>
+  
+      </div>
 
   
 
     </div>
-
-
+  
     <div class="middle">
       <div class="uploader">
 
@@ -43,11 +44,10 @@
             <div id="notimage" class="hidden">Please select an image</div>
             <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
           </div>
+
           <div id="response" class="hidden">
             <div id="messages"></div>
-            <progress class="progress" id="file-progress" value="0">
-              <span>0</span>%
-            </progress>
+          
           </div>
         </label>
       </div>
@@ -55,11 +55,11 @@
     </div>
 
     <div class="right social">
-      <span class="loginwith">Sign in with<br />social network</span>
+      <!-- <span class="loginwith">Sign in with<br />social network</span>
 
       <button class="social-signin facebook">Log in with facebook</button>
       <button class="social-signin twitter">Log in with Twitter</button>
-      <button class="social-signin google">Log in with Google+</button>
+      <button class="social-signin google">Log in with Google+</button> -->
     </div>
   </div>
 

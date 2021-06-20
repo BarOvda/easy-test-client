@@ -29,6 +29,7 @@ export class FeedComponent implements OnInit {
     this.summaries = [];
 
     this.followedCourses = this.userService.user.followedCourses;
+    console.log(this.followedCourses)
     this.getAllFeed();
 
   }
@@ -114,7 +115,7 @@ export class FeedComponent implements OnInit {
     // console.log(course)
     this.feedService.all_feed.forEach(sum => {
       // console.log(sum)
-      if (sum.courseAppearance.couresId == course)
+      if (sum.courseAppearance.couresId._id == course)
         this.summaries.push(sum)
     })
 

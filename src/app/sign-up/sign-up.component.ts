@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SignUpComponent implements OnInit {
 
   form: FormGroup;
+  serverErr: string;
 
   user: User;
   isValid: Boolean = true;
@@ -37,6 +38,8 @@ export class SignUpComponent implements OnInit {
     const result = await this.service.signUp(formData);
     this.goTOHomePage();
     }catch(err){
+      this.serverErr = err.error.message;
+
       console.log(err);
       this.isValid=false;
     }
